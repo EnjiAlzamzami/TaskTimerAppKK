@@ -3,16 +3,101 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
+
 
     <TextView
+        android:id="@+id/kkTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="230dp"
+        android:text="Kotlin Knights"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/infoLay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp"
+        android:background="@color/purple_500"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kkTv"
+        android:layout_marginTop="30dp">
+
+        <EditText
+            android:id="@+id/nameEt"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:inputType="textPersonName"
+            android:hint="Username" />
+
+        <EditText
+            android:id="@+id/passEt"
+            android:visibility="visible"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:padding="10dp"
+            android:layout_marginTop="8dp"
+            android:hint="Password"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infoLay"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:layout_weight="1"
+        android:onClick="onClick"
+        android:textAllCaps="false"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/signupBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:textSize="17sp"
+        android:textColor="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+    <TextView
+        android:id="@+id/guestBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="register as a guest"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

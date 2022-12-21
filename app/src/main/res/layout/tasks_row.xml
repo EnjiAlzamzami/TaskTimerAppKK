@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/rootLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:weightSum="8"
+        android:background="@color/purple_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/detailsLay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/taskTitleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Feed the cat"
+                android:textStyle="bold"
+                android:textSize="25sp" />
+            <TextView
+                android:id="@+id/taskDetailTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Use the new food \nDon't forget to clean the bowl after"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/timerTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:01:15"
+                android:textStyle="bold"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnLay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/timerBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:onClick="onClick"
+                app:srcCompat="@drawable/started_icon" />
+
+            <ImageView
+                android:id="@+id/resetBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:onClick="onClick"
+                app:srcCompat="@drawable/restart_icon"
+                />
+            <ImageView
+                android:id="@+id/deleteBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:onClick="onClick"
+                app:srcCompat="@drawable/cancel_icon"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
