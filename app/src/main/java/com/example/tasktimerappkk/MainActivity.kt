@@ -19,13 +19,13 @@ class MainActivity : AppCompatActivity() {
     lateinit var users:ArrayList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        context=this
-        viewModel= ViewModelProvider(this).get(UsersViewModel::class.java)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
+
+        context=this
+        viewModel= ViewModelProvider(this).get(UsersViewModel::class.java)
         //Get users form the fierbase
         users= arrayListOf<User>()
         users=viewModel.getUser()
@@ -43,8 +43,8 @@ class MainActivity : AppCompatActivity() {
                         if (password==user.password){
                             userData.user=user
 
-                            var intent = Intent(context, AddTaskActivity::class.java)
-                            context.startActivity(intent)
+                            var intent1 = Intent(context, TasksActivity::class.java)
+                            context.startActivity(intent1)
 
                         }
                         else{

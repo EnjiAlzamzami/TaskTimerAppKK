@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
 
     <TextView
@@ -82,7 +83,8 @@
         android:onClick="onClick"
         android:textAllCaps="false"
         android:background="@color/co2"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="OnClick" />
 
 
     <TextView

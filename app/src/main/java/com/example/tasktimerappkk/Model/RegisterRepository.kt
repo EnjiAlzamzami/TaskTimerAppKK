@@ -44,9 +44,9 @@ class RegisterRepository : AppCompatActivity() {
 
 
     fun getUsers(): ArrayList<User>{
-        var users= arrayListOf<User>()
+        var users:ArrayList<User>
 
-
+        users= arrayListOf()
         users.clear()
         db.collection("UsersCollection")
             .get()
@@ -70,7 +70,6 @@ class RegisterRepository : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.w("MainActivity", "Error getting documents.", exception)
             }
-        Thread.sleep(3000)
         return users
     }
 
