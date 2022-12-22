@@ -36,67 +36,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:597011618670:android:6422239436b7f4b247bf7f",
-        "android_client_info": {
-          "package_name": "com.example.tasktimerapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "597011618670-bccat8cof35ib24qf787bcq15kd3bg6l.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCDJaYRhUKJAf-jzYNNdNMoIVzI-EIawHI"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "597011618670-bccat8cof35ib24qf787bcq15kd3bg6l.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:597011618670:android:4346b772c47f010747bf7f",
         "android_client_info": {
           "package_name": "com.example.tasktimerappkk"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "597011618670-bccat8cof35ib24qf787bcq15kd3bg6l.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCDJaYRhUKJAf-jzYNNdNMoIVzI-EIawHI"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "597011618670-bccat8cof35ib24qf787bcq15kd3bg6l.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:597011618670:android:825febf6412285d347bf7f",
-        "android_client_info": {
-          "package_name": "com.example.tasktimerdraft"
         }
       },
       "oauth_client": [

@@ -68,5 +68,6 @@ class MainActivity : AppCompatActivity() {
     //This to save user who is register
     companion object userData{
         var user: User? =null
+        var localStorage="tasks"
     }
 }

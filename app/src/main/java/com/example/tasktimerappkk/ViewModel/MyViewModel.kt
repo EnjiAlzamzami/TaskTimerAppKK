@@ -13,7 +13,7 @@ import kotlinx.coroutines.*
 
 class MyViewModel(application: Application): AndroidViewModel(application)   {
     private val repository: Repository
-    private lateinit var notes: LiveData<List<Task>>
+    private lateinit var tasks: LiveData<List<Task>>
     val db = Firebase.firestore
 
 
@@ -23,12 +23,12 @@ class MyViewModel(application: Application): AndroidViewModel(application)   {
 
         repository = Repository(MainActivity.userData.user!!.id)
         CoroutineScope(Dispatchers.IO).launch {
-            notes = repository.getData()
+            tasks = repository.getData()
 
         }
     }
 
-    fun getUser(): LiveData<List<Task>>{
+    fun getTasks(): LiveData<List<Task>>{
 
            return repository.getData()
 

@@ -68,8 +68,6 @@ class Repository (val user:String){
 
 
                     tasks.add(Task(document.id,title,details,timer))
-
-
                 }
 
                 }
