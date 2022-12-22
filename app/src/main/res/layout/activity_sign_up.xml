@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/black">
+    android:background="@drawable/layout_style2">
 
     <LinearLayout
         android:id="@+id/topLay"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
+            android:id="@+id/signupTv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign Up"
-            android:textSize="40dp"
             android:textAlignment="center"
             android:textColor="@color/white"
-            />
+            android:textSize="40dp" />
     </LinearLayout>
 
 
@@ -33,105 +31,139 @@
         android:id="@+id/bottomLay"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/frame_style1"
         android:orientation="vertical"
         android:padding="40dp"
-        android:background="@drawable/frame_style1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topLay">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="15dp"
             app:cardCornerRadius="10dp"
-            >
+            app:cardElevation="15dp">
+
             <EditText
                 android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:textAlignment="center"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_username_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="@string/username_hint"
                 android:inputType="textPersonName"
-                android:hint="@string/username_hint" />
+                android:paddingStart="10dp" />
 
         </androidx.cardview.widget.CardView>
+
         <androidx.cardview.widget.CardView
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="15dp"
             app:cardCornerRadius="10dp"
-            >
+            app:cardElevation="15dp">
+
             <EditText
                 android:id="@+id/emailET"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:textAlignment="center"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:inputType="textPersonName"
-                android:hint="@string/email_hint" />
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_email_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="@string/email_hint"
+                android:inputType="textEmailAddress"
+                android:paddingStart="10dp" />
 
         </androidx.cardview.widget.CardView>
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="15dp"
             app:cardCornerRadius="10dp"
-            >
+            app:cardElevation="15dp">
+
             <EditText
                 android:id="@+id/passwordET"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:textAlignment="center"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:inputType="textPersonName"
-                android:hint="@string/password_hint" />
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_password_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword"
+                android:paddingStart="10dp" />
 
         </androidx.cardview.widget.CardView>
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="15dp"
             app:cardCornerRadius="10dp"
-            >
+            app:cardElevation="15dp">
+
             <EditText
                 android:id="@+id/confirmET"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:textAlignment="center"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:inputType="textPersonName"
-                android:hint="@string/confPassword_hint" />
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_password_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="@string/confPassword_hint"
+                android:inputType="textPassword"
+                android:paddingStart="10dp" />
 
         </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:cardElevation="15dp"
-            app:cardCornerRadius="10dp"
-            >
-            <Button
-                android:id="@+id/signUpBt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_marginBottom="68dp"
-                android:text="@string/signupBtn" />
-
-        </androidx.cardview.widget.CardView>
-
 
     </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/signupView"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="60dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/signUpBt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_style2"
+            android:padding="5dp"
+            android:text="@string/signupBtn"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="33dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_icon"
+
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

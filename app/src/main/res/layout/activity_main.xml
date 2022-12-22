@@ -4,133 +4,191 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/layout_style2">
 
-
-    <TextView
-        android:id="@+id/kkTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="230dp"
-        android:text="@string/group"
-        android:textSize="30dp"
-        android:textStyle="bold"
+    <LinearLayout
+        android:id="@+id/topLay"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/infoLay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kkTv"
-        android:layout_marginTop="30dp">
-        <LinearLayout
+        <ImageView
+            android:id="@+id/langBtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="30dp"
+            app:srcCompat="@drawable/language_icon" />
+
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="20dp"
-            android:background="@color/co4"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:text="عربي/ ENG"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
-            >
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/bottomLay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/frame_style1"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topLay">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="15dp"
+            app:srcCompat="@drawable/kk1_logo" />
+
+        <TextView
+            android:id="@+id/loginTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:text="Log in"
+            android:textColor="@color/co6"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="15dp">
 
             <EditText
                 android:id="@+id/nameEt"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_username_icon"
+                android:drawablePadding="5dp"
                 android:ems="10"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:inputType="textPersonName"
                 android:hint="@string/username_hint"
-                />
+                android:inputType="textPersonName"
+                android:paddingStart="10dp"
+                android:textSize="20dp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="15dp">
 
             <EditText
                 android:id="@+id/passEt"
-                android:visibility="visible"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_password_icon"
+                android:drawablePadding="5dp"
                 android:ems="10"
-                android:padding="10dp"
-                android:layout_marginTop="8dp"
                 android:hint="@string/password_hint"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:inputType="textPassword" />
-        </LinearLayout>
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:paddingStart="10dp"
+                android:textSize="20dp" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/signupView"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="30dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp"
+        app:layout_constraintBottom_toTopOf="@id/signupLay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_style2"
+            android:padding="5dp"
+            android:text="@string/loginBtn"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+
     </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="@string/loginBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoLay"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"
-        android:layout_weight="1"
-        android:onClick="onClick"
-        android:textAllCaps="false"
-        android:background="@color/co2"
-        android:textStyle="bold"
-        tools:ignore="OnClick" />
-
-
-    <TextView
-        android:id="@+id/signupBtn"
+    <LinearLayout
+        android:id="@+id/signupLay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/signupBtn"
-        android:textStyle="bold"
-        android:layout_marginTop="30dp"
-        android:textSize="17sp"
-        android:textColor="@color/purple_700"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guestBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/signupTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:text="Don't have any account?"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/signupBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:text="@string/signupBtn"
+            android:textAlignment="center"
+            android:textColor="@color/co7"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
     <TextView
         android:id="@+id/guestBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/guestBtn"
         android:textStyle="bold"
-        android:textSize="17sp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/purple_700"
+        android:textSize="20dp"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/co7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signupBtn" />
-
-    <ImageView
-        android:id="@+id/langBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/ic_baseline_language_24"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="25dp"/>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="عربي/ ENG"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/langBtn"
-        app:layout_constraintEnd_toEndOf="@+id/langBtn"
-        app:layout_constraintStart_toStartOf="@+id/langBtn"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
