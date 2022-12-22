@@ -1,3 +1,23 @@
+
 <resources>
-    <string name="app_name">TaskTimerAppKK</string>
+
+
+
+    <string name="app_name">TaskTimerTest</string>
+    <string name="group">Kotlin Knights</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="confPassword_hint">Confirm Password</string>
+    <string name="loginBtn">Login</string>
+    <string name="signupBtn">Sign up</string>
+    <string name="guestBtn">register as a guest</string>
+    <string name="totalTimeText">Total Time</string>
+    <string name="taskTitle">Title</string>
+    <string name="taskTitle_hint">Write your task title here</string>
+    <string name="taskDetail">Detail</string>
+    <string name="taskDetail_hint">Write your details here</string>
+    <string name="addTaskBtn">Add Task</string>
+
+
 </resources>

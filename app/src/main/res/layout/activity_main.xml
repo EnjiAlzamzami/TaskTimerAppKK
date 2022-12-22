@@ -11,58 +11,67 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="230dp"
-        android:text="Kotlin Knights"
+        android:text="@string/group"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/infoLay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="20dp"
-        android:background="@color/purple_500"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/kkTv"
         android:layout_marginTop="30dp">
-
-        <EditText
-            android:id="@+id/nameEt"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:ems="10"
-            android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:inputType="textPersonName"
-            android:hint="Username" />
+            android:padding="20dp"
+            android:background="@color/co4"
 
-        <EditText
-            android:id="@+id/passEt"
-            android:visibility="visible"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:ems="10"
-            android:padding="10dp"
-            android:layout_marginTop="8dp"
-            android:hint="Password"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:inputType="textPassword" />
+            >
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/nameEt"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:padding="10dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:inputType="textPersonName"
+                android:hint="@string/username_hint"
+                />
+
+            <EditText
+                android:id="@+id/passEt"
+                android:visibility="visible"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:padding="10dp"
+                android:layout_marginTop="8dp"
+                android:hint="@string/password_hint"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:inputType="textPassword" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="Login"
+        android:text="@string/loginBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/infoLay"
@@ -72,6 +81,7 @@
         android:layout_weight="1"
         android:onClick="onClick"
         android:textAllCaps="false"
+        android:background="@color/co2"
         android:textStyle="bold" />
 
 
@@ -79,7 +89,7 @@
         android:id="@+id/signupBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign up"
+        android:text="@string/signupBtn"
         android:textStyle="bold"
         android:layout_marginTop="30dp"
         android:textSize="17sp"
@@ -91,7 +101,7 @@
         android:id="@+id/guestBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="register as a guest"
+        android:text="@string/guestBtn"
         android:textStyle="bold"
         android:textSize="17sp"
         android:layout_marginTop="20dp"
@@ -99,5 +109,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signupBtn" />
+
+    <ImageView
+        android:id="@+id/langBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/ic_baseline_language_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="25dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="عربي/ ENG"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/langBtn"
+        app:layout_constraintEnd_toEndOf="@+id/langBtn"
+        app:layout_constraintStart_toStartOf="@+id/langBtn"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
