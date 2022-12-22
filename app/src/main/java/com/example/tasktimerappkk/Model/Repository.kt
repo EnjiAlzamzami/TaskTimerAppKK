@@ -1,6 +1,8 @@
 package com.example.addtask.Model
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -9,6 +11,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class Repository (val user:String){
+
+
+    private val currentTasks: MutableLiveData<List<Task>> = MutableLiveData()
+
 
 
     val db = Firebase.firestore
@@ -44,7 +50,7 @@ class Repository (val user:String){
     }
 
 
-    fun getData(): ArrayList<Task>{
+    fun getData(): LiveData<List<Task>> {
         var tasks:ArrayList<Task>
 
         tasks= arrayListOf()
@@ -60,9 +66,8 @@ class Repository (val user:String){
                     var details=document.get("details").toString()
                     var timer=document.get("timer").toString().toDouble()
 
+
                     tasks.add(Task(document.id,title,details,timer))
-
-
                 }
 
                 }
@@ -72,7 +77,8 @@ class Repository (val user:String){
             .addOnFailureListener { exception ->
                 Log.w("MainActivity", "Error getting documents.", exception)
             }
-        return tasks
+        currentTasks.postValue(tasks)
+        return currentTasks
     }
 
 }

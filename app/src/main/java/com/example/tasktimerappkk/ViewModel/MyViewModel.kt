@@ -3,6 +3,7 @@ package com.example.addtask.ViewModel
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import com.example.addtask.Model.Repository
 import com.example.addtask.Model.Task
 import com.example.tasktimerappkk.MainActivity
@@ -12,7 +13,7 @@ import kotlinx.coroutines.*
 
 class MyViewModel(application: Application): AndroidViewModel(application)   {
     private val repository: Repository
-    private lateinit var notes: ArrayList<Task>
+    private lateinit var tasks: LiveData<List<Task>>
     val db = Firebase.firestore
 
 
@@ -22,12 +23,12 @@ class MyViewModel(application: Application): AndroidViewModel(application)   {
 
         repository = Repository(MainActivity.userData.user!!.id)
         CoroutineScope(Dispatchers.IO).launch {
-            notes = repository.getData()
+            tasks = repository.getData()
 
         }
     }
 
-    fun getUser(): ArrayList<Task>{
+    fun getTasks(): LiveData<List<Task>>{
 
            return repository.getData()
 
