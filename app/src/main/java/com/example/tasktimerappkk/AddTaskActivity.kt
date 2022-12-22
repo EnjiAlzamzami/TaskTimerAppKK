@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.addtask.Model.Task
-import com.example.addtask.ViewModel.MyViewModel
+import com.example.tasktimerappkk.Model.Task
+import com.example.tasktimerappkk.ViewModel.MyViewModel
 import com.example.tasktimerappkk.databinding.ActivityAddTaskBinding
-import com.example.tasktimerappkk.databinding.ActivitySignUpBinding
-import com.example.tasktimerappkk.databinding.ActivityTasksBinding
 
 class AddTaskActivity : AppCompatActivity() {
     lateinit var binding: ActivityAddTaskBinding

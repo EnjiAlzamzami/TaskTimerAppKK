@@ -1,11 +1,10 @@
-package com.example.addtask.ViewModel
+package com.example.tasktimerappkk.ViewModel
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.addtask.Model.Repository
-import com.example.addtask.Model.Task
+import com.example.tasktimerappkk.Model.Repository
+import com.example.tasktimerappkk.Model.Task
 import com.example.tasktimerappkk.MainActivity
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase

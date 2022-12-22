@@ -3,6 +3,7 @@ package com.example.tasktimerappkk.Model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+
 @Entity(tableName="tasks")
 class TaskL (
     @PrimaryKey(autoGenerate = true)

@@ -3,7 +3,7 @@ package com.example.tasktimerappkk.Model
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.addtask.Model.Task
+import com.example.tasktimerappkk.Model.Task
 import com.example.tasktimerappkk.R
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -44,9 +44,9 @@ class RegisterRepository : AppCompatActivity() {
 
 
     fun getUsers(): ArrayList<User>{
-        var users:ArrayList<User>
+        var users= arrayListOf<User>()
 
-        users= arrayListOf()
+
         users.clear()
         db.collection("UsersCollection")
             .get()
@@ -70,6 +70,7 @@ class RegisterRepository : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.w("MainActivity", "Error getting documents.", exception)
             }
+        Thread.sleep(3000)
         return users
     }
 

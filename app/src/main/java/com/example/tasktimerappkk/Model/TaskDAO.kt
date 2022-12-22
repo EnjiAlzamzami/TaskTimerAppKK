@@ -1,7 +1,7 @@
 package com.example.tasktimerappkk.Model
 
 import androidx.room.*
-import com.example.addtask.Model.Task
+import com.example.tasktimerappkk.Model.Task
 
 interface TaskDAO  {
     @Query("select * from tasks order by pk asc")

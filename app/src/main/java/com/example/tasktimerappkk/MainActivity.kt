@@ -24,10 +24,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        //Get users form the fierbase
-        users= arrayListOf()
-        users=viewModel.getUser()
         setContentView(binding.root)
+
+        //Get users form the fierbase
+        users= arrayListOf<User>()
+        users=viewModel.getUser()
         binding.apply {
             signupBtn.setOnClickListener {
                 var intentSignUp = Intent(context, SignUp::class.java)
