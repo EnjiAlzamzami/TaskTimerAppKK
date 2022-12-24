@@ -21,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign Up"
+            android:textStyle="italic"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="40dp" />
@@ -130,15 +131,16 @@
 
     </LinearLayout>
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/signupView"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="20dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/signinLay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -154,6 +156,37 @@
 
     </androidx.cardview.widget.CardView>
 
+    <LinearLayout
+        android:id="@+id/signinLay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/signup_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:text="Already a member?"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/signupBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:text="Sign in"
+            android:textAlignment="center"
+            android:textColor="@color/co7"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
     <ImageView
         android:id="@+id/backBtn"
         android:layout_width="38dp"

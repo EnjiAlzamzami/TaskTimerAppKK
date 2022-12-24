@@ -9,10 +9,10 @@
     <string name="password_hint">Password</string>
     <string name="email_hint">Email</string>
     <string name="confPassword_hint">Confirm Password</string>
-    <string name="loginBtn">Login</string>
+    <string name="loginBtn">Sign in</string>
     <string name="signupBtn">Sign up</string>
     <string name="guestBtn">register as a guest</string>
-    <string name="totalTimeText">Total Time</string>
+    <string name="totalTimeText">Total Time Its :</string>
     <string name="taskTitle">Title</string>
     <string name="taskTitle_hint">Write your task title here</string>
     <string name="taskDetail">Detail</string>

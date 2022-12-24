@@ -12,7 +12,6 @@
         android:layout_margin="20dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="15dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,8 +20,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/layout_style">
+            android:background="@drawable/layout_style"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/detailsLay"
@@ -32,8 +31,8 @@
 
                 <ImageView
                     android:id="@+id/deleteBtn"
-                    android:layout_width="35dp"
-                    android:layout_height="45dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="end"
                     android:padding="5dp"
                     app:srcCompat="@drawable/cancel_24" />
@@ -42,7 +41,7 @@
                     android:id="@+id/taskTitleTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/co4"
+                    android:background="@color/co6"
                     android:text="Feed the cat"
                     android:textAlignment="center"
                     android:textColor="@color/white"
@@ -53,10 +52,9 @@
                     android:id="@+id/descriptionTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/co4"
+                    android:background="@color/co6"
                     android:text="Use the new food \nDon't forget to clean the bowl after"
                     android:textAlignment="center"
-                    android:padding="5dp"
                     android:textColor="@color/white"
                     android:textSize="16dp" />
             </LinearLayout>
@@ -75,7 +73,7 @@
                 <ImageView
                     android:id="@+id/resetBtn"
                     android:layout_width="30dp"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/restart_24" />
 
@@ -83,20 +81,18 @@
                     android:id="@+id/timerTv"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/frame_style"
                     android:gravity="center"
                     android:text="00:00:00"
-                    android:layout_weight="1"
-                    android:textColor="@color/purple_500"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:inputType="time" />
-
+                    android:textColor="@color/co7"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/timerBtn"
                     android:layout_width="30dp"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/started_24" />
 
