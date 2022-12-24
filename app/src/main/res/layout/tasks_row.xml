@@ -22,8 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/layout_style"
-            >
+            android:background="@drawable/layout_style">
 
             <LinearLayout
                 android:id="@+id/detailsLay"
@@ -33,11 +32,10 @@
 
                 <ImageView
                     android:id="@+id/deleteBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:onClick="onClick"
-                    android:padding="5dp"
+                    android:layout_width="35dp"
+                    android:layout_height="45dp"
                     android:layout_gravity="end"
+                    android:padding="5dp"
                     app:srcCompat="@drawable/cancel_24" />
 
                 <TextView
@@ -52,16 +50,16 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/notesTv"
+                    android:id="@+id/descriptionTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/co4"
                     android:text="Use the new food \nDon't forget to clean the bowl after"
                     android:textAlignment="center"
+                    android:padding="5dp"
                     android:textColor="@color/white"
                     android:textSize="16dp" />
             </LinearLayout>
-
 
 
             <LinearLayout
@@ -77,9 +75,8 @@
                 <ImageView
                     android:id="@+id/resetBtn"
                     android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:onClick="onClick"
                     app:srcCompat="@drawable/restart_24" />
 
                 <TextView
@@ -88,17 +85,19 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/frame_style"
                     android:gravity="center"
-                    android:text="00:01:15"
+                    android:text="00:00:00"
                     android:layout_weight="1"
                     android:textColor="@color/purple_500"
                     android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:inputType="time" />
+
+
                 <ImageView
                     android:id="@+id/timerBtn"
                     android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:onClick="onClick"
                     app:srcCompat="@drawable/started_24" />
 
             </LinearLayout>

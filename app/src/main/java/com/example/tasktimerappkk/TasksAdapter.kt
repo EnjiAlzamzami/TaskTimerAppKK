@@ -1,5 +1,6 @@
 package com.example.tasktimerappkk
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -25,10 +26,12 @@ class TasksAdapter(var clickListener: ClickListener):
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         var selectedItem=tasks[position]
         holder.binding.apply {
-            timerTv.text=selectedItem.timer.toString()
-            timerBtn.setOnClickListener {
+            taskTitleTv.text=selectedItem.title
+            descriptionTv.text=selectedItem.details
 
+            timerBtn.setOnClickListener {
                 clickListener.startStopTimer(selectedItem)
+
             }
             deleteBtn.setOnClickListener {
                 clickListener.deleteTimer(selectedItem)
@@ -36,7 +39,6 @@ class TasksAdapter(var clickListener: ClickListener):
             resetBtn.setOnClickListener {
                 clickListener.resetTimer(selectedItem)
             }
-
         }
     }
 
@@ -50,6 +52,7 @@ class TasksAdapter(var clickListener: ClickListener):
     }
 
     interface ClickListener {
+        fun taskUI(task: Task)
         fun startStopTimer(task: Task)
         fun resetTimer(task: Task)
         fun deleteTimer(task: Task)

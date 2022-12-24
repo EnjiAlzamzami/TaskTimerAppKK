@@ -6,6 +6,9 @@ import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.tasktimerappkk.Model.Task
 import com.example.tasktimerappkk.ViewModel.MyViewModel
@@ -13,6 +16,7 @@ import com.example.tasktimerappkk.databinding.ActivityTasksBinding
 import com.example.tasktimerappkk.databinding.TasksRowBinding
 import com.example.tasktimerappkk.service.TimerService
 import kotlin.math.roundToInt
+import kotlin.properties.Delegates
 
 class TasksActivity : AppCompatActivity(), TasksAdapter.ClickListener {
     private lateinit var TasksAdapter: TasksAdapter
@@ -20,13 +24,17 @@ class TasksActivity : AppCompatActivity(), TasksAdapter.ClickListener {
     lateinit var viewModel: MyViewModel
 
     private var time=0.0
-    var timerStarted = false
+    lateinit var currentTask:Task
+    var timerStarted =false
     private lateinit var serviceIntent: Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityTasksBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        serviceIntent = Intent(applicationContext, TimerService::class.java)
+        registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
 
 
         viewModel= ViewModelProvider(this).get(MyViewModel::class.java)
@@ -38,27 +46,46 @@ class TasksActivity : AppCompatActivity(), TasksAdapter.ClickListener {
         TasksAdapter= TasksAdapter(this)
         binding.tasksRv.adapter=TasksAdapter
 
-        serviceIntent = Intent(applicationContext, TimerService::class.java)
-        registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
+
+        binding.addingBtn.setOnClickListener{
+            val AddTaskIntent = Intent(applicationContext,AddTaskActivity :: class.java)
+            startActivity(AddTaskIntent)
+            finish()
+        }
+
+
+    }
+
+    override fun taskUI(task: Task) {
+        currentTask=task
+        Log.d("TasksActivity", "taskUI: $currentTask")
+        var binding = TasksRowBinding.inflate(layoutInflater)
+        binding.apply {
+            timerTv.text=getTimeStringFromDouble(task.timer)
+
+        }
 
     }
 
     override fun startStopTimer(task:Task) {
+        currentTask=task
         startStopTimer()
     }
 
     override fun resetTimer(task: Task) {
-        resetTimer()
-
+        var newTimer=resetTimer()
+        viewModel.editTask(task,getTimeStringFromDouble(newTimer))
     }
 
     override fun deleteTimer(task: Task) {
        viewModel.deleteTask(task)
+        Toast.makeText(this,"Deleted Task!",Toast.LENGTH_SHORT).show()
     }
 
-    private fun resetTimer() {
+    private fun resetTimer():Double {
         stopTimer()
         time=0.0
+        return time
     }
 
     private fun startStopTimer() {
@@ -74,6 +101,7 @@ class TasksActivity : AppCompatActivity(), TasksAdapter.ClickListener {
         startService(serviceIntent)
         binding.timerBtn.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24)
         timerStarted=true
+
     }
 
     private fun stopTimer() {
@@ -88,7 +116,10 @@ class TasksActivity : AppCompatActivity(), TasksAdapter.ClickListener {
         override fun onReceive(context: Context?, intent: Intent?) {
             var binding= TasksRowBinding.inflate(layoutInflater)
             time=intent!!.getDoubleExtra(TimerService.TIME_EXTRA,0.0)
-            binding.timerTv.text=getTimeStringFromDouble(time)
+            var timeTxt=getTimeStringFromDouble(time)
+            binding.timerTv.text=timeTxt
+            viewModel.editTask(currentTask,timeTxt)
+
         }
 
     }
@@ -101,4 +132,5 @@ class TasksActivity : AppCompatActivity(), TasksAdapter.ClickListener {
 
         return String.format("%02d:%02d:%02d", hours, minutes, seconds)
     }
+
 }

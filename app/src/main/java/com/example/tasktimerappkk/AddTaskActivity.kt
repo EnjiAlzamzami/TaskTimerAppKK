@@ -1,5 +1,6 @@
 package com.example.tasktimerappkk
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -12,10 +13,10 @@ class AddTaskActivity : AppCompatActivity() {
     lateinit var binding: ActivityAddTaskBinding
     lateinit var viewModel: MyViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
-        viewModel= ViewModelProvider(this).get(MyViewModel::class.java)
         super.onCreate(savedInstanceState)
         binding= ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel= ViewModelProvider(this).get(MyViewModel::class.java)
         binding.apply {
             addTaskBtn.setOnClickListener {
                 var title=titleEt.text.toString()
@@ -27,9 +28,10 @@ class AddTaskActivity : AppCompatActivity() {
                     Toast.makeText(this@AddTaskActivity, "The task added successfully", Toast.LENGTH_LONG).show()
                     titleEt.setText("")
                     detailEt.setText("")
-                }
-                else
-                {
+                    val tasksActivityIntent = Intent(this@AddTaskActivity,TasksActivity::class.java)
+                    startActivity(tasksActivityIntent)
+                    finish()
+                }else{
                     Toast.makeText(this@AddTaskActivity, "Please fill all fields", Toast.LENGTH_LONG).show()
                 }
 

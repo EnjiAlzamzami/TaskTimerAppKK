@@ -10,22 +10,19 @@
         android:id="@+id/topLay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp"
+         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="15dp"
             android:weightSum="7"
             android:gravity="bottom"
-            android:background="@color/co4"
-            >
+            android:background="@color/co4">
 
             <LinearLayout
                 android:id="@+id/totalLay"
@@ -41,13 +38,14 @@
                     android:text="@string/totalTimeText"
                     android:textStyle="bold"
                     android:textSize="20dp" />
+
                 <TextView
                     android:id="@+id/totalTimeTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="00:01:23"
-                    android:textStyle="bold"
-                    android:textSize="30dp" />
+                    android:text="00:00:00"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -59,14 +57,13 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingActionButton2"
+                    android:id="@+id/addingBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:layout_weight="1"
                     android:backgroundTint="@color/co6"
-                    app:srcCompat="@drawable/add_icon"
-                    />
+                    app:srcCompat="@drawable/add_icon"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -76,8 +73,14 @@
         android:id="@+id/tasksRv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topLay" />
+        app:layout_constraintTop_toBottomOf="@+id/topLay"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/tasks_row" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
