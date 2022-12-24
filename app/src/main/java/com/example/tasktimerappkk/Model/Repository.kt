@@ -14,6 +14,9 @@ class Repository (val user:String){
 
 
     private val currentTasks: MutableLiveData<List<Task>> = MutableLiveData()
+
+
+
     val db = Firebase.firestore
 
     fun addTask(task: Task){
@@ -28,40 +31,53 @@ class Repository (val user:String){
             getData()
         }
     }
-     fun updateTask(task: Task,newText:String){
-        db.collection("$user").document(task.id).update("timer", newText)
-         getData()
+    suspend fun updateTask(task: Task,newText:String){
+
+        db.collection("$user").document(task.id).update("noteText", newText)
+
 
     }
-     fun getTask(task: Task){
-        db.collection("$user").document(task.id).get()
-    }
+    suspend fun getTask(task: Task){
+        db.collection("$user").document(task.id)
+            .get()
 
-     fun deleteTask(task: Task){
+
+
+    }
+    suspend fun deleteTask(task: Task){
+
         db.collection("$user").document(task.id).delete()
-         getData()
     }
+
 
     fun getData(): LiveData<List<Task>> {
-       var tasks= arrayListOf<Task>()
-      //  tasks.clear()
+        var tasks:ArrayList<Task>
+
+        tasks= arrayListOf()
+        tasks.clear()
         db.collection("$user")
             .get()
             .addOnSuccessListener { result ->
+
                 for (document in result) {
+
+
                     var title=document.get("title").toString()
                     var details=document.get("details").toString()
                     var timer=document.get("timer").toString().toDouble()
+
+
                     tasks.add(Task(document.id,title,details,timer))
                 }
-                currentTasks.postValue(tasks)
-                Log.d("Tasks", "getData: $currentTasks / $tasks ")
+
                 }
+
+
 
             .addOnFailureListener { exception ->
                 Log.w("MainActivity", "Error getting documents.", exception)
             }
-
+        currentTasks.postValue(tasks)
         return currentTasks
     }
 

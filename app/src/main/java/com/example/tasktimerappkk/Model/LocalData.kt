@@ -4,9 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.tasktimerappkk.Model.Task
 
-@Database(entities = [Task::class], version = 1, exportSchema = false)
+@Database(entities = [TaskL::class], version = 1, exportSchema = false)
 abstract class LocalData : RoomDatabase(){
     abstract fun taskDao():TaskDAO
     companion object{

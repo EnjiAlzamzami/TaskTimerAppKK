@@ -1,17 +1,13 @@
 package com.example.tasktimerappkk.Model
 
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.util.Log
-import com.example.tasktimerappkk.Model.Task
-import com.example.tasktimerappkk.R
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.math.BigInteger
-import java.security.MessageDigest
+
 
 class RegisterRepository : AppCompatActivity() {
 

@@ -1,15 +1,20 @@
 package com.example.tasktimerappkk.Model
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.tasktimerappkk.Model.Task
+import com.example.tasktimerappkk.MainActivity
 
-interface TaskDAO  {
-    @Query("select * from tasks order by pk asc")
-    suspend fun getNotes():List<Task>
+@Dao
+interface TaskDAO {
+    companion object userData{ lateinit var flag:String}
+
+    @Query("select * from tasks WHERE user='guest' order by pk asc")
+    fun getTasks(): LiveData<List<TaskL>>
+//    @Query("select * from tasks WHERE user!='guest' order by pk asc")
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addNote(noteT:Task)
+    suspend fun addTasks(task:TaskL)
     @Update
-    suspend fun updateNote(noteT:Task)
+    suspend fun updateTasks(task:TaskL)
     @Delete
-    suspend fun deleteNote(noteT:Task)
+    suspend fun deleteTasks(task:TaskL)
 }

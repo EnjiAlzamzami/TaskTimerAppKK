@@ -55,7 +55,13 @@ class MainActivity : AppCompatActivity() {
                 }
 
 
+            }//End loginBtn.setOnClickListener
+
+            guestBtn.setOnClickListener {
+                var intent = Intent(context, AddTaskActivity::class.java)
+                context.startActivity(intent)
             }
+
         }
     }
 
