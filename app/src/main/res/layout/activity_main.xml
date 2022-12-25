@@ -87,6 +87,7 @@
                 android:background="@drawable/custom_input"
                 android:drawableStart="@drawable/custom_username_icon"
                 android:drawablePadding="5dp"
+
                 android:ems="10"
                 android:hint="@string/username_hint"
                 android:inputType="textPersonName"
@@ -140,7 +141,7 @@
             android:background="@drawable/layout_style2"
             android:padding="5dp"
             android:text="@string/loginBtn"
-            android:textColor="@color/white"
+            android:textColor="@color/co7"
             android:textSize="20dp" />
 
 
