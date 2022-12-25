@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">مؤقت المهام</string>
+    <string name="group" translatable="false">Kotlin Knights</string>
+    <string name="username_hint" translatable="false">اسم المستخدم</string>
+    <string name="password_hint" translatable="false">كلمة المرور</string>
+    <string name="email_hint" translatable="false">البريد الالكتروني</string>
+    <string name="confPassword_hint" translatable="false">تأكيد كلمة المرور</string>
+    <string name="loginBtn">تسجيل الدخول</string>
+    <string name="signupBtn">تسجيل جديد</string>
+    <string name="guestBtn">التسجيل كضيف</string>
+    <string name="totalTimeText">وقت العمل الكلي :</string>
+    <string name="taskTitle">العنوان</string>
+    <string name="taskTitle_hint">اكتب عنوان المهمة هنا</string>
+    <string name="taskDetail">شرج المهمة</string>
+    <string name="taskDetail_hint">اكتب تفاصيل المهمة هنا</string>
+    <string name="addTaskBtn">اضافة مهمة</string>
+
+</resources>

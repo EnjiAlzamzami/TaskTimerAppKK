@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimerappkk.Model.Task
 import com.example.tasktimerappkk.Model.TaskL
 import com.example.tasktimerappkk.databinding.TasksRowBinding
+import com.example.tasktimerappkk.service.TimerService
+import kotlin.math.roundToInt
 
 
 class TasksAdapter(var clickListener: ClickListener):
@@ -32,18 +34,26 @@ class TasksAdapter(var clickListener: ClickListener):
             taskTitleTv.text=selectedItem.title
             descriptionTv.text=selectedItem.details
             var timerStarted = true
+            var working=true
             var time=0.0
 
             timerBtn.setOnClickListener {
                 //clickListener.startStopTimer(selectedItem)
                 if (timerStarted) {
 
+
                     timerBtn.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24)
                     timerStarted=false
+                    working=true
                     object : CountDownTimer(30000, 1000) {
                         override fun onTick(millisUntilFinished: Long) {
-                            timerTv.setText("0:" + checkDigit(time))
-                            time++
+                            timerTv.setText("0:" +  getTimeStringFromDouble(time))
+                           if(working){
+                               TasksActivity.totalTime+=1
+                               clickListener.updateTotal()
+                               time++
+
+                               }
                         }
 
 
@@ -55,11 +65,13 @@ class TasksAdapter(var clickListener: ClickListener):
                 }
                 else
                 {
+                    working=false
                     timerBtn.setImageResource(R.drawable.started_icon)
                     timerStarted=true
                 }
 
-            }
+            }//End timerBtn.setOnClickListener
+
             deleteBtn.setOnClickListener {
                 clickListener.deleteTimer(selectedItem)
             }
@@ -83,10 +95,21 @@ class TasksAdapter(var clickListener: ClickListener):
         fun startStopTimer(task: Task)
         fun resetTimer(task: Task)
         fun deleteTimer(task: Task)
+        fun updateTotal()
     }
 
     fun checkDigit(number: Double): String? {
         return  number.toString()
     }
+    //****************************************************************
+    private fun getTimeStringFromDouble(time: Double): String {
+        val resultInt = time.roundToInt()
+        val hours = resultInt % 86400 / 3600
+        val minutes = resultInt % 86400 % 3600 / 60
+        val seconds = resultInt % 86400 % 3600 % 60
+
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds)
+    }
+    //****************************************************************
 }
 

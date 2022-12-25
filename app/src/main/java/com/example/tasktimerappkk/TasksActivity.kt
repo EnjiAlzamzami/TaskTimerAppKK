@@ -15,13 +15,14 @@ import com.example.tasktimerappkk.service.TimerService
 import kotlin.math.roundToInt
 
 
-    class TasksActivity : AppCompatActivity(), TasksAdapter.ClickListener {
+    class TasksActivity : AppCompatActivity(), TasksAdapter.ClickListener {//End of the class
         private lateinit var TasksAdapter: TasksAdapter
         lateinit var binding:ActivityTasksBinding
         lateinit var viewModel: MyViewModel
         lateinit var context:Context
 
         private var time=0.0
+
         var timerStarted = false
         private lateinit var serviceIntent: Intent
 
@@ -34,7 +35,6 @@ import kotlin.math.roundToInt
             context=this
 
             binding.apply {
-
 
 
                 viewModel = ViewModelProvider(this@TasksActivity).get(MyViewModel::class.java)
@@ -73,7 +73,11 @@ import kotlin.math.roundToInt
                 viewModel.deleteTask(task)
             }
 
-            private fun resetTimer() {
+        override fun updateTotal() {
+            binding.totalTimeTv.text=getTimeStringFromDouble(totalTime)
+        }
+
+        private fun resetTimer() {
                 stopTimer()
                 time=0.0
             }
@@ -118,5 +122,8 @@ import kotlin.math.roundToInt
 
                 return String.format("%02d:%02d:%02d", hours, minutes, seconds)
             }
+        public companion object{
+            var totalTime=0.0f.toDouble()
+        }
 
         }

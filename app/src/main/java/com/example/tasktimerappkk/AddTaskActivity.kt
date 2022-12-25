@@ -21,6 +21,7 @@ class AddTaskActivity : AppCompatActivity() {
         binding= ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
         context=this
+        var intent1 = Intent(context, TasksActivity::class.java)
         binding.apply {
             addTaskBtn.setOnClickListener {
 
@@ -50,7 +51,7 @@ class AddTaskActivity : AppCompatActivity() {
                     ).show()
                     titleEt.setText("")
                     detailEt.setText("")
-                    var intent1 = Intent(context, TasksActivity::class.java)
+
                     context.startActivity(intent1)
                 } else {
                     Toast.makeText(
@@ -66,6 +67,10 @@ class AddTaskActivity : AppCompatActivity() {
 
             }
 
-        }
+            backBtn.setOnClickListener {
+
+                context.startActivity(intent1)
+            }
+        }//end binding. apply
     }
 }//End of the class
