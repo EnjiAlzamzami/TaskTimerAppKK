@@ -25,22 +25,22 @@ class AddTaskActivity : AppCompatActivity() {
         binding.apply {
             addTaskBtn.setOnClickListener {
 
-                var title = titleEt.text.toString()
-                var details = detailEt.text.toString()
-                var timer = 0.0f.toDouble()
+                val title = titleEt.text.toString()
+                val details = detailEt.text.toString()
+                val timer = 0.0
                 if (title.isNotEmpty() && details.isNotEmpty()) {
 
                     //First case if the user loged in, then it will stored in a table in database
                     if(MainActivity.user!=null) {
-                        var newTask = Task("", title, details, timer)
+                        val newTask = Task("", title, details, timer)
                         viewModel.addTask(newTask)
-                        var userName=MainActivity.user!!.username
-                        var newTaskLocal= TaskL(userName,0,title,details,timer)
+                        val userName=MainActivity.user!!.username
+                        val newTaskLocal= TaskL(userName,0,title,details,timer)
                         viewModel.addLocalTask(newTaskLocal, MainActivity.user!!.username)
                     }//End first case
                     //The second case when the user is guest, then the tasks will store in the database
                     else{
-                        var newTask= TaskL("guest",0,title,details,timer)
+                        val newTask= TaskL("guest",0,title,details,timer)
                         viewModel.addLocalTask(newTask,"guest")
                     }
 

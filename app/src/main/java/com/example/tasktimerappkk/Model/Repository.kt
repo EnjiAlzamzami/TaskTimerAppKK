@@ -33,8 +33,8 @@ class Repository (val user:String){
     }
     suspend fun updateTask(task: Task,newText:String){
 
-        db.collection("$user").document(task.id).update("noteText", newText)
-
+        db.collection("$user").document(task.id).update("timer", newText)
+        getData()
 
     }
     suspend fun getTask(task: Task){
@@ -47,13 +47,12 @@ class Repository (val user:String){
     suspend fun deleteTask(task: Task){
 
         db.collection("$user").document(task.id).delete()
+        getData()
     }
 
 
     fun getData(): LiveData<List<Task>> {
-        var tasks:ArrayList<Task>
-
-        tasks= arrayListOf()
+        var tasks= arrayListOf<Task>()
         tasks.clear()
         db.collection("$user")
             .get()
@@ -69,15 +68,16 @@ class Repository (val user:String){
 
                     tasks.add(Task(document.id,title,details,timer))
                 }
+                currentTasks.postValue(tasks)
+                Log.d("MainActivity", "getData: $currentTasks/ [$tasks] ")
 
-                }
+            }
 
 
 
             .addOnFailureListener { exception ->
                 Log.w("MainActivity", "Error getting documents.", exception)
             }
-        currentTasks.postValue(tasks)
         return currentTasks
     }
 

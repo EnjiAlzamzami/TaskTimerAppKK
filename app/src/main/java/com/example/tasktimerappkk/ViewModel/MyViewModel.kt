@@ -17,17 +17,14 @@ class MyViewModel(application: Application): AndroidViewModel(application)   {
 
     init {
 
-
         val taskDao = LocalData.getDatabase(application).taskDao()
         localRepositry = LocalTaskRepositry(taskDao)
         //======================================================
         if (MainActivity.user!=null) {
-
             repository = Repository(MainActivity.userData.user!!.id)
-            CoroutineScope(Dispatchers.IO).launch {
                 tasks = repository.getData()
                localTasks = localRepositry.getTasks((MainActivity.user!!.username))
-            }
+
         }
         //Else if this is a guest user:
         else {

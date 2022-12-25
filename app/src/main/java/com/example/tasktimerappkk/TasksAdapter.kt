@@ -1,13 +1,14 @@
 package com.example.tasktimerappkk
 
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimerappkk.Model.Task
 import com.example.tasktimerappkk.Model.TaskL
+import com.example.tasktimerappkk.databinding.ActivityTasksBinding
 import com.example.tasktimerappkk.databinding.TasksRowBinding
-import com.example.tasktimerappkk.service.TimerService
 import kotlin.math.roundToInt
 
 
@@ -29,34 +30,32 @@ class TasksAdapter(var clickListener: ClickListener):
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        var selectedItem=tasks[position]
+        val selectedItem=tasks[position]
+        var time=0.0
         holder.binding.apply {
             taskTitleTv.text=selectedItem.title
             descriptionTv.text=selectedItem.details
+            time=selectedItem.timer
+            timerTv.setText(getTimeStringFromDouble(time))
             var timerStarted = true
             var working=true
-            var time=0.0
 
             timerBtn.setOnClickListener {
-                //clickListener.startStopTimer(selectedItem)
                 if (timerStarted) {
-
-
                     timerBtn.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24)
                     timerStarted=false
                     working=true
                     object : CountDownTimer(30000, 1000) {
                         override fun onTick(millisUntilFinished: Long) {
-                            timerTv.setText("0:" +  getTimeStringFromDouble(time))
                            if(working){
-                               TasksActivity.totalTime+=1
-                               clickListener.updateTotal()
                                time++
+                               TasksActivity.totalTime+=1
 
-                               }
+                               //.totalTimeTv.text=getTimeStringFromDouble(TasksActivity.totalTime)
+                               clickListener.updateTotal(tasks)
+                               timerTv.setText(getTimeStringFromDouble(time))
+                           }
                         }
-
-
                         override fun onFinish() {
 
                         }
@@ -65,9 +64,12 @@ class TasksAdapter(var clickListener: ClickListener):
                 }
                 else
                 {
+                    timerTv.setText(getTimeStringFromDouble(time))
+                    Log.d("Timer", "onBindViewHolder: $time")
                     working=false
-                    timerBtn.setImageResource(R.drawable.started_icon)
+                    timerBtn.setImageResource(R.drawable.started_24)
                     timerStarted=true
+                    clickListener.updateTimer(selectedItem,time)
                 }
 
             }//End timerBtn.setOnClickListener
@@ -76,7 +78,12 @@ class TasksAdapter(var clickListener: ClickListener):
                 clickListener.deleteTimer(selectedItem)
             }
             resetBtn.setOnClickListener {
-                clickListener.resetTimer(selectedItem)
+               time=0.0
+               working=false
+               timerStarted=true
+              //  timerTv.setText(getTimeStringFromDouble(time))
+                timerBtn.setImageResource(R.drawable.started_24)
+                clickListener.updateTimer(selectedItem,time)
             }
         }
     }
@@ -84,18 +91,14 @@ class TasksAdapter(var clickListener: ClickListener):
     override fun getItemCount() = tasks.size
 
     fun UpdateList(tasks: List<Task>) {
-
         this.tasks = tasks
-
         notifyDataSetChanged()
     }
 
     interface ClickListener {
-        fun taskUI(task: Task)
-        fun startStopTimer(task: Task)
-        fun resetTimer(task: Task)
         fun deleteTimer(task: Task)
-        fun updateTotal()
+        fun updateTotal(tasks:List<Task>)
+        fun updateTimer(task: Task,time:Double)
     }
 
     fun checkDigit(number: Double): String? {

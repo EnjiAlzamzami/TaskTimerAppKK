@@ -10,8 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.tasktimerappkk.Model.Task
 import com.example.tasktimerappkk.ViewModel.MyViewModel
 import com.example.tasktimerappkk.databinding.ActivityTasksBinding
-import com.example.tasktimerappkk.databinding.TasksRowBinding
-import com.example.tasktimerappkk.service.TimerService
 import kotlin.math.roundToInt
 
 
@@ -21,17 +19,15 @@ import kotlin.math.roundToInt
         lateinit var viewModel: MyViewModel
         lateinit var context:Context
 
-        private var time=0.0
-
-        var timerStarted = false
-        private lateinit var serviceIntent: Intent
-
+        companion object{
+            var totalTime=0.0
+        }
 
         override fun onCreate(savedInstanceState: Bundle?) {
-            viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
             super.onCreate(savedInstanceState)
             binding = ActivityTasksBinding.inflate(layoutInflater)
             setContentView(binding.root)
+            viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
             context=this
 
             binding.apply {
@@ -41,6 +37,7 @@ import kotlin.math.roundToInt
                 //Read data from database
                 viewModel.getTasks().observe(this@TasksActivity, { userTasks ->
                     TasksAdapter.UpdateList(userTasks)
+                    updateTotal(userTasks)
                 })
 
                 TasksAdapter = TasksAdapter(this@TasksActivity)
@@ -50,69 +47,71 @@ import kotlin.math.roundToInt
                     context.startActivity(intent)
                 }
 
-                serviceIntent = Intent(applicationContext, TimerService::class.java)
-                registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
-
             }
         }
 
-        override fun taskUI(task: Task) {
-            TODO("Not yet implemented")
+
+        override fun deleteTimer(task: Task) {
+            viewModel.deleteTask(task)
         }
 
-        override fun startStopTimer(task:Task) {
-                startStopTimer()
-            }
-
-            override fun resetTimer(task: Task) {
-                resetTimer()
-
-            }
-
-            override fun deleteTimer(task: Task) {
-                viewModel.deleteTask(task)
-            }
-
-        override fun updateTotal() {
+        override fun updateTotal(tasks: List<Task>) {
+            totalTime=0.0
+                for(i in tasks){
+                   totalTime+=i.timer
+                }
             binding.totalTimeTv.text=getTimeStringFromDouble(totalTime)
         }
 
-        private fun resetTimer() {
-                stopTimer()
-                time=0.0
-            }
+        override fun updateTimer(task: Task, time: Double) {
+            viewModel.editTask(task,time.toString())
+        }
 
-            private fun startStopTimer() {
-                if(timerStarted)
-                    stopTimer()
-                else
-                    startTimer()
-            }
-
-            private fun startTimer() {
-                var binding= TasksRowBinding.inflate(layoutInflater)
-                binding.timerBtn.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24)
-                serviceIntent.putExtra(TimerService.TIME_EXTRA,time)
-                startService(serviceIntent)
-                timerStarted=true
-            }
-
-            private fun stopTimer() {
-                var binding= TasksRowBinding.inflate(layoutInflater)
-                stopService(serviceIntent)
-                binding.timerBtn.setImageResource(R.drawable.started_icon)
-                timerStarted=false
-            }
-
-
-            private val  updateTime : BroadcastReceiver = object : BroadcastReceiver() {
-                override fun onReceive(context: Context?, intent: Intent?) {
-                    var binding= TasksRowBinding.inflate(layoutInflater)
-                    time=intent!!.getDoubleExtra(TimerService.TIME_EXTRA,0.0)
-                    binding.timerTv.text=getTimeStringFromDouble(time)
+        /*
+                override fun deleteTimer(task: Task) {
+                    viewModel.deleteTask(task)
                 }
 
+            override fun updateTotal() {
+                binding.totalTimeTv.text=getTimeStringFromDouble(totalTime)
             }
+
+            private fun resetTimer() {
+                    stopTimer()
+                    time=0.0
+                }
+
+                private fun startStopTimer() {
+                    if(timerStarted)
+                        stopTimer()
+                    else
+                        startTimer()
+                }
+
+                private fun startTimer() {
+                    var binding= TasksRowBinding.inflate(layoutInflater)
+                    binding.timerBtn.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24)
+                    serviceIntent.putExtra(TimerService.TIME_EXTRA,time)
+                    startService(serviceIntent)
+                    timerStarted=true
+                }
+
+                private fun stopTimer() {
+                    var binding= TasksRowBinding.inflate(layoutInflater)
+                    stopService(serviceIntent)
+                    binding.timerBtn.setImageResource(R.drawable.started_icon)
+                    timerStarted=false
+                }
+
+
+                private val  updateTime : BroadcastReceiver = object : BroadcastReceiver() {
+                    override fun onReceive(context: Context?, intent: Intent?) {
+                        var binding= TasksRowBinding.inflate(layoutInflater)
+                        time=intent!!.getDoubleExtra(TimerService.TIME_EXTRA,0.0)
+                        binding.timerTv.text=getTimeStringFromDouble(time)
+                    }
+
+                }*/
 
             private fun getTimeStringFromDouble(time: Double): String {
                 val resultInt = time.roundToInt()
@@ -122,8 +121,6 @@ import kotlin.math.roundToInt
 
                 return String.format("%02d:%02d:%02d", hours, minutes, seconds)
             }
-        public companion object{
-            var totalTime=0.0f.toDouble()
-        }
+
 
         }
