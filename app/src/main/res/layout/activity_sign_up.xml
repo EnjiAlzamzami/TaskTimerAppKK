@@ -151,7 +151,7 @@
             android:background="@drawable/layout_style2"
             android:padding="5dp"
             android:text="@string/signupBtn"
-            android:textColor="@color/white"
+            android:textColor="@color/co7"
             android:textSize="20dp" />
 
     </androidx.cardview.widget.CardView>
