@@ -121,7 +121,7 @@
                     android:id="@+id/totalTimeTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="00:00:00"
+                    android:text="@string/defualtTimer"
                     android:textSize="30dp"
                     android:textColor="@color/co7"
                     android:textStyle="bold" />

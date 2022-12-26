@@ -46,7 +46,7 @@ class AddTaskActivity : AppCompatActivity() {
 
                     Toast.makeText(
                         this@AddTaskActivity,
-                        "The task added successfully",
+                        getString(R.string.addTaskS),
                         Toast.LENGTH_LONG
                     ).show()
                     titleEt.setText("")

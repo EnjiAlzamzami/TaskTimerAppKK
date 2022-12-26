@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimerappkk.Model.Task
 import com.example.tasktimerappkk.Model.TaskL
-import com.example.tasktimerappkk.databinding.ActivityTasksBinding
 import com.example.tasktimerappkk.databinding.TasksRowBinding
 import kotlin.math.roundToInt
+
+
+
 
 
 class TasksAdapter(var clickListener: ClickListener):
@@ -30,75 +32,184 @@ class TasksAdapter(var clickListener: ClickListener):
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val selectedItem=tasks[position]
-        var time=0.0
-        holder.binding.apply {
-            taskTitleTv.text=selectedItem.title
-            descriptionTv.text=selectedItem.details
-            time=selectedItem.timer
-            timerTv.setText(getTimeStringFromDouble(time))
-            var timerStarted = true
-            var working=true
+        //The binding will have tow direction, first if the user log in,
+        //the selected item will be the one from tasks list
+        //If the user is guest user and the data loaded from room,
+        // then selected will item taken from localTasks
+        var selectedItem: Any
 
-            timerBtn.setOnClickListener {
-                if (timerStarted) {
-                    timerBtn.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24)
-                    timerStarted=false
-                    working=true
-                    object : CountDownTimer(30000, 1000) {
-                        override fun onTick(millisUntilFinished: Long) {
-                           if(working){
-                               time++
-                               TasksActivity.totalTime+=1
+            var time = 0.0
 
-                               //.totalTimeTv.text=getTimeStringFromDouble(TasksActivity.totalTime)
-                               clickListener.updateTotal(tasks)
-                               timerTv.setText(getTimeStringFromDouble(time))
-                           }
-                        }
-                        override fun onFinish() {
+            holder.binding.apply {
 
-                        }
-                    }.start()
 
-                }
-                else
-                {
+                if (MainActivity.userData.user != null) {
+                    selectedItem = tasks[position]
+                    taskTitleTv.text = (selectedItem as Task).title
+                    descriptionTv.text = (selectedItem as Task).details
+                    time = (selectedItem as Task).timer
+                    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                     timerTv.setText(getTimeStringFromDouble(time))
-                    Log.d("Timer", "onBindViewHolder: $time")
-                    working=false
-                    timerBtn.setImageResource(R.drawable.started_24)
-                    timerStarted=true
-                    clickListener.updateTimer(selectedItem,time)
-                }
+                    var timerStarted = true
+                    var working = true
 
-            }//End timerBtn.setOnClickListener
+                    time= (selectedItem as Task).timer
 
-            deleteBtn.setOnClickListener {
-                clickListener.deleteTimer(selectedItem)
-            }
-            resetBtn.setOnClickListener {
-               time=0.0
-               working=false
-               timerStarted=true
-              //  timerTv.setText(getTimeStringFromDouble(time))
-                timerBtn.setImageResource(R.drawable.started_24)
-                clickListener.updateTimer(selectedItem,time)
-            }
-        }
+
+                    timerBtn.setOnClickListener {
+                        if (timerStarted) {
+                            timerBtn.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24)
+                            timerStarted=false
+                            working=true
+                            object : CountDownTimer(30000, 1000) {
+                                override fun onTick(millisUntilFinished: Long) {
+                                    if(working){
+                                        time++
+                                        TasksActivity.totalTime+=1
+
+                                        //.totalTimeTv.text=getTimeStringFromDouble(TasksActivity.totalTime)
+                                        clickListener.updateTotal(tasks)
+                                        timerTv.setText(getTimeStringFromDouble(time))
+                                    }
+                                }
+                                override fun onFinish() {
+
+                                }
+                            }.start()
+
+                        }
+                        else
+                        {
+                            timerTv.setText(getTimeStringFromDouble(time))
+                            Log.d("Timer", "onBindViewHolder: $time")
+                            working=false
+                            timerBtn.setImageResource(R.drawable.started_24)
+                            timerStarted=true
+                            clickListener.updateTimer(selectedItem as Task,time)
+                        }
+
+                    }//End timerBtn.setOnClickListener
+
+                    deleteBtn.setOnClickListener {
+                        clickListener.deleteTask(selectedItem as Task)
+                    }
+                    resetBtn.setOnClickListener {
+                        time=0.0
+                        working=false
+                        timerStarted=true
+                        //  timerTv.setText(getTimeStringFromDouble(time))
+                        timerBtn.setImageResource(R.drawable.started_24)
+                        clickListener.updateTimer(selectedItem as Task,time)
+                    }
+
+                    }//end if user loged in
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+else{
+
+    selectedItem=localTasks[position]
+    taskTitleTv.text = (selectedItem as TaskL).title
+    descriptionTv.text = (selectedItem as TaskL).details
+
+    time = (selectedItem as TaskL).timer
+    timerTv.setText(getTimeStringFromDouble(time))
+
+    deleteBtn.setOnClickListener {
+
+        clickListener.deleteLocalTask(selectedItem as TaskL)
+
     }
+    //----------------------------------------------------------
+                    var timerStarted = true
+                    var working=true
+                    time= (selectedItem as TaskL).timer
 
-    override fun getItemCount() = tasks.size
+                    timerBtn.setOnClickListener {
+                        if (timerStarted) {
+                            timerBtn.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24)
+                            timerStarted=false
+                            working=true
+                            object : CountDownTimer(800000, 1000) {
+                                override fun onTick(millisUntilFinished: Long) {
+                                    if(working){
+                                        time++
+                                        TasksActivity.totalTime+=1
 
+                                        //.totalTimeTv.text=getTimeStringFromDouble(TasksActivity.totalTime)
+                                        clickListener.updateLocalTotal(localTasks)
+                                        timerTv.setText(getTimeStringFromDouble(time))
+                                    }
+                                }
+                                override fun onFinish() {
+
+                                }
+                            }.start()
+
+                        }
+                        else
+                        {
+                            timerTv.setText(getTimeStringFromDouble(time))
+                            Log.d("Timer", "onBindViewHolder: $time")
+                            working=false
+                            timerBtn.setImageResource(R.drawable.started_24)
+                            timerStarted=true
+                            clickListener.updateLocalTimer(selectedItem as TaskL,time)
+                        }
+
+                    }//End timerBtn.setOnClickListener
+
+
+                    resetBtn.setOnClickListener {
+                        time=0.0
+                        working=false
+                        timerStarted=true
+                        //  timerTv.setText(getTimeStringFromDouble(time))
+                        timerBtn.setImageResource(R.drawable.started_24)
+                        clickListener.updateLocalTimer(selectedItem as TaskL,time)
+                    }
+
+                }//End guest user part
+
+
+
+
+
+
+
+            }//End binding.apply
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    }//End onBindViewHolder
+
+    override fun getItemCount(): Int {
+        if (MainActivity.userData.user != null){
+          return  tasks.size}
+        return localTasks.size
+    }
+    //this for online database
     fun UpdateList(tasks: List<Task>) {
         this.tasks = tasks
         notifyDataSetChanged()
     }
+    //this for off line data
+    fun UpdateLocalList(tasksL: List<TaskL>) {
+        this.localTasks = tasksL
+        notifyDataSetChanged()
+    }
 
     interface ClickListener {
-        fun deleteTimer(task: Task)
+        fun deleteTask(task: Task)
         fun updateTotal(tasks:List<Task>)
         fun updateTimer(task: Task,time:Double)
+
+        fun updateLocalTotal(tasks:List<TaskL>)
+        fun deleteLocalTask(task: TaskL)
+        fun updateLocalTimer(task: TaskL, time:Double)
     }
 
     fun checkDigit(number: Double): String? {
@@ -115,4 +226,5 @@ class TasksAdapter(var clickListener: ClickListener):
     }
     //****************************************************************
 }
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

@@ -27,8 +27,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
         context=this
         loadLocate()
         viewModel= ViewModelProvider(this).get(UsersViewModel::class.java)
@@ -52,13 +50,15 @@ class MainActivity : AppCompatActivity() {
                     {
                         if (password==user.password){
                             userData.user=user
+                            nameEt.setText("")
+                            passEt.setText("")
 
                             var intent1 = Intent(context, TasksActivity::class.java)
                             context.startActivity(intent1)
 
                         }
                         else{
-                            Toast.makeText(this@MainActivity,"Please enter a correct password & user name",
+                            Toast.makeText(this@MainActivity,getString(R.string.loginWrnning),
                                 Toast.LENGTH_SHORT).show()
                         }
                     }
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
             }//End loginBtn.setOnClickListener
 
             guestBtn.setOnClickListener {
-                var intent = Intent(context, AddTaskActivity::class.java)
+                var intent = Intent(context, TasksActivity::class.java)
                 context.startActivity(intent)
             }
 

@@ -54,7 +54,7 @@ class SignUp : AppCompatActivity() {
                         //Create new user object then added in the database:
                         var user=User("", name,email,md5Hash(password))
                         viewModel.addUser(user)
-                        Toast.makeText(this@SignUp, "User Added Successfully", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@SignUp, getString(R.string.addUserS), Toast.LENGTH_LONG).show()
                         var intent = Intent(this@SignUp, MainActivity::class.java)
                         this@SignUp.startActivity(intent)
                     }
@@ -62,7 +62,7 @@ class SignUp : AppCompatActivity() {
 
                 }
                 else{
-                    Toast.makeText(this@SignUp, "please fill all fields", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@SignUp, getString(R.string.fillWarnning), Toast.LENGTH_LONG).show()
                 }
             }//End signUpBt.setOnClickListener
         }
@@ -77,7 +77,7 @@ class SignUp : AppCompatActivity() {
                 "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
                 ")+")
         if(EMAIL_ADDRESS_PATTERN.matcher(email).matches()) return true
-        else  Toast.makeText(this,"The email must follow the pattern example@organization.extention",Toast.LENGTH_SHORT).show()
+        else  Toast.makeText(this,getString(R.string.emailCon),Toast.LENGTH_SHORT).show()
         return false
         //=====================================================================
 
