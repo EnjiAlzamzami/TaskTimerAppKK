@@ -43,7 +43,33 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="15dp">
+
+            <EditText
+                android:id="@+id/fullnameEt"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_fullname_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Full Name"
+                android:inputType="textPersonName"
+                android:paddingStart="10dp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="15dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="15dp">
 
@@ -66,8 +92,9 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:cardCornerRadius="10dp"
+
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="15dp"            app:cardCornerRadius="10dp"
             app:cardElevation="15dp">
 
             <EditText
@@ -88,8 +115,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:cardCornerRadius="10dp"
+
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="15dp"            app:cardCornerRadius="10dp"
             app:cardElevation="15dp">
 
             <EditText
@@ -110,8 +138,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:cardCornerRadius="10dp"
+
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="15dp"            app:cardCornerRadius="10dp"
             app:cardElevation="15dp">
 
             <EditText

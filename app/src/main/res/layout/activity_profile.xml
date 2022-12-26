@@ -176,6 +176,23 @@
                 android:layout_margin="3dp"
                 android:textColor="@color/co7" />
         </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:background="@color/co6"
+            app:cardCornerRadius="10dp"
+            android:padding="10dp"
+            app:cardElevation="10dp">
+
+            <Button
+                android:id="@+id/langBtn"
+                android:background="@drawable/language1"
+                android:padding="10dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:textColor="@color/co7" />
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="60dp"
