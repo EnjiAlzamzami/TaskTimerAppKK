@@ -20,6 +20,7 @@
     <string name="addUserS">User Added Successfully</string>
     <string name="addTaskS">The task added successfully</string>
     <string name="Signin">Sign in</string>
+    <string name="membeEr">Already a member?</string>
     <string name="member">Not a member?</string>
     <string name="NewTask">New Task</string>
     <string name="loginWrnning">Please enter a correct password and user name</string>
@@ -37,6 +38,8 @@
     <string name="deleteAcc">Are you sure You want to delete your account!</string>
     <string name="languChose">Choose your Language</string>
     <string name="FullName">Full Name</string>
+    <string name="notFoundUser">The user doesn\'t found!</string>
+    <string name="fillRequir">Please Enter the required data!</string>
 
 
 </resources>

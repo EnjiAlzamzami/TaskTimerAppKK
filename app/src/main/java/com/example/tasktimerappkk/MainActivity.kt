@@ -67,13 +67,13 @@ class MainActivity : AppCompatActivity() {
                                  }
                              }
                          }else{
-                             Toast.makeText(this@MainActivity,"The user doesn't found!",
+                             Toast.makeText(this@MainActivity,getString(R.string.notFoundUser),
                                  Toast.LENGTH_SHORT).show()
 
                          }
                     }
                 }else{
-                    Toast.makeText(this@MainActivity,"Please Enter the required data!",
+                    Toast.makeText(this@MainActivity,getString(R.string.fillRequir),
                         Toast.LENGTH_SHORT).show()
                 }
 
@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
     //=============================================================
     private fun loadLocate(){
         val sharPrefreances=getSharedPreferences("Settings",Activity.MODE_PRIVATE)
-        val language=sharPrefreances.getString("MyLang","en")
+        val language=sharPrefreances.getString("MyLang","")
         if (language != null) {
             setLocate(language)
         }

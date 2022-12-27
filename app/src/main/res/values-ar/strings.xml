@@ -19,6 +19,7 @@
     <string name="addTaskS">تم اضافة المهمة بنجاح</string>
     <string name="defualtTimer">00:00:00</string>
     <string name="Signin">تسجيل الدخول</string>
+    <string name="membeEr">لديك حساب من قبل</string>
     <string name="member">ليس لديك حساب؟</string>
     <string name="NewTask">مهمة جديدة</string>
     <string name="loginWrnning">الرجاء التأكد من صحة اسم المستخدم و كلمة المرور</string>
@@ -36,6 +37,8 @@
     <string name="deleteAcc">هل أنت متأكد من انك تريد حذف الحساب!</string>
     <string name="languChose">اختر لغتك</string>
     <string name="FullName">الاسم كامل</string>
+    <string name="notFoundUser">يبدو أن المستخدم غير مسجل من قبل</string>
+    <string name="fillRequir">فضلا ادخل اسم المستخدم و كلمة المرور</string>
 
 
 </resources>

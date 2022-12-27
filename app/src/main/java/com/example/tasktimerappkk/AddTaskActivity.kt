@@ -57,15 +57,11 @@ class AddTaskActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this@AddTaskActivity,
-                        "Please fill all fields",
+                        getString(R.string.fillWarnning),
                         Toast.LENGTH_LONG
                     ).show()
                 }
-
-
                 //=======================================================
-
-
             }
 
             backBtn.setOnClickListener {

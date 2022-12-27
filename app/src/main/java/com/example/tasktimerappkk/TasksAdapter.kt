@@ -58,7 +58,7 @@ class TasksAdapter(var clickListener: ClickListener):
                         timerBtn.setImageResource(R.drawable.pause1)
                         timerStarted=false
                         working=true
-                        object : CountDownTimer(30000, 1000) {
+                        object : CountDownTimer(80000, 1000) {
                             override fun onTick(millisUntilFinished: Long) {
                                 if(working){
                                     time++
