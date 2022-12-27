@@ -9,11 +9,32 @@
     <string name="loginBtn">تسجيل الدخول</string>
     <string name="signupBtn">تسجيل جديد</string>
     <string name="guestBtn">التسجيل كضيف</string>
-    <string name="totalTimeText">وقت العمل الكلي :</string>
+    <string name="totalTimeText">الوقت الاجمالي:</string>
     <string name="taskTitle">العنوان</string>
     <string name="taskTitle_hint">اكتب عنوان المهمة هنا</string>
     <string name="taskDetail">شرج المهمة</string>
     <string name="taskDetail_hint">اكتب تفاصيل المهمة هنا</string>
     <string name="addTaskBtn">اضافة مهمة</string>
+    <string name="addUserS">تم اضافة المستخدم بنجاح</string>
+    <string name="addTaskS">تم اضافة المهمة بنجاح</string>
+    <string name="defualtTimer">00:00:00</string>
+    <string name="Signin">تسجيل الدخول</string>
+    <string name="member">ليس لديك حساب؟</string>
+    <string name="NewTask">مهمة جديدة</string>
+    <string name="loginWrnning">الرجاء التأكد من صحة اسم المستخدم و كلمة المرور</string>
+    <string name="fillWarnning">فضلا قم بتعبئة جميع الخانات</string>
+    <string name="emailCon">"يجب ادخال الايميل وفق الصيغة التالية: example@organization.extention"</string>
+    <string name="deleteConf">هل انت متأكدانك تريد حذف المهمة؟</string>
+    <string name="deleted">تم حذف المهمة بنجاح</string>
+    <string name="delete">حذف</string>
+    <string name="cancel">الغاء</string>
+    <string name="Hello">مرحبا</string>
+    <string name="name">اسم المستخدم</string>
+    <string name="userName">اسم المستخدم</string>
+    <string name="wrong">حدث خطأ نعتذر!</string>
+    <string name="deleteAccT">حذف الحساب</string>
+    <string name="deleteAcc">هل أنت متأكد من انك تريد حذف الحساب!</string>
+    <string name="languChose">اختر لغتك</string>
+
 
 </resources>

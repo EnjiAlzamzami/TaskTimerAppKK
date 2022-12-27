@@ -1,7 +1,10 @@
 package com.example.tasktimerappkk.Model
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
+import org.checkerframework.checker.units.qual.s
 
 class LocalTaskRepositry  (var taskDao:TaskDAO){
     suspend fun addTask(task: TaskL){
@@ -14,40 +17,16 @@ class LocalTaskRepositry  (var taskDao:TaskDAO){
     suspend fun deleteTask(task:TaskL){
         taskDao.deleteTasks(task)
     }
-    fun getTasks(user:String): LiveData<List<TaskL>> {
+    fun getTasks(userName:String): LiveData<List<TaskL>> {
 
-        var currentLiveTask:MutableLiveData<List<TaskL>> = MutableLiveData()
-        var allTasks=taskDao.getTasks().value
-        var currentTask:ArrayList<TaskL> = arrayListOf()//To store tasks belong to the current users
-        if (allTasks != null) {
-            for (task in allTasks){
-                if (task.user==user){
-                    currentTask.add(task)
-                }
+        return Transformations.map(taskDao.getTasks()) { taskList ->
+            taskList.filter {task ->
+                task.user.contains(userName)
             }
         }
-        //++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        currentLiveTask.postValue(currentTask)
-        return currentLiveTask
     }
 
 
 }
 
 
-//fun getTasks(user:String): LiveData<List<TaskL>> {
-//
-//    var currentLiveTask:MutableLiveData<List<TaskL>> = MutableLiveData()
-//    var allTasks=taskDao.getTasks().value
-//    var currentTask:ArrayList<TaskL> = arrayListOf()//To store tasks belong to the current users
-//    if (allTasks != null) {
-//        for (task in allTasks){
-//            if (task.user==user){
-//                currentTask.add(task)
-//            }
-//        }
-//    }
-//    //++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//    currentLiveTask.postValue(currentTask)
-//    return currentLiveTask
-//}

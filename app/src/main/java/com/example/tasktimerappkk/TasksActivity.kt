@@ -1,58 +1,95 @@
 package com.example.tasktimerappkk
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.example.tasktimerappkk.Model.Task
+import com.example.tasktimerappkk.Model.TaskL
 import com.example.tasktimerappkk.ViewModel.MyViewModel
 import com.example.tasktimerappkk.databinding.ActivityTasksBinding
 import kotlin.math.roundToInt
 
 
-    class TasksActivity : AppCompatActivity(), TasksAdapter.ClickListener {//End of the class
-        private lateinit var TasksAdapter: TasksAdapter
-        lateinit var binding:ActivityTasksBinding
-        lateinit var viewModel: MyViewModel
-        lateinit var context:Context
+class TasksActivity : AppCompatActivity(), TasksAdapter.ClickListener {
+    private lateinit var TasksAdapter: TasksAdapter
+    private lateinit var binding:ActivityTasksBinding
+    private lateinit var viewModel: MyViewModel
+    lateinit var context:Context
 
-        companion object{
-            var totalTime=0.0
+    companion object{
+        var totalTime=0.0
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityTasksBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+        context=this
+
+        //If the user login then we will get data from firebase, else the data will retrieve from room
+
+        //**************************************************************
+        // viewModel = ViewModelProvider(this@TasksActivity).get(MyViewModel::class.java)
+        TasksAdapter = TasksAdapter(this@TasksActivity)
+        binding.tasksRv.adapter = TasksAdapter
+        if (MainActivity.user!=null) {
+            //Read data from database
+            viewModel.getTasks().observe(this@TasksActivity) { userTasks ->
+                TasksAdapter.UpdateList(userTasks)
+                updateTotal(userTasks)
+            }
+
         }
+        else{
+            binding.profileCard.visibility= View.GONE
+            viewModel.getLocalTasks().observe(this@TasksActivity) { localTasks ->
+                TasksAdapter.UpdateLocalList(localTasks)
+                updateLocalTotal(localTasks)
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            binding = ActivityTasksBinding.inflate(layoutInflater)
-            setContentView(binding.root)
-            viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
-            context=this
-
-            binding.apply {
-
-
-                viewModel = ViewModelProvider(this@TasksActivity).get(MyViewModel::class.java)
-                //Read data from database
-                viewModel.getTasks().observe(this@TasksActivity, { userTasks ->
-                    TasksAdapter.UpdateList(userTasks)
-                    updateTotal(userTasks)
-                })
-
-                TasksAdapter = TasksAdapter(this@TasksActivity)
-                binding.tasksRv.adapter = TasksAdapter
-                addingBtn.setOnClickListener {
-                    var intent = Intent(context, AddTaskActivity::class.java)
-                    context.startActivity(intent)
+                binding.logoKK.setOnClickListener {
+                    val signInIntent = Intent(context, MainActivity::class.java)
+                    context.startActivity(signInIntent)
+                    finish()
                 }
-
             }
         }
+        //****************************************************************
+        binding.addingBtn.setOnClickListener {
+            val AddTaskIntent = Intent(context, AddTaskActivity::class.java)
+            context.startActivity(AddTaskIntent)
+            finish()
+        }
+        binding.profileBtn.setOnClickListener {
+            val profileIntent = Intent(context, ProfileActivity::class.java)
+            context.startActivity(profileIntent)
+            finish()
+        }
 
 
-        override fun deleteTimer(task: Task) {
-            viewModel.deleteTask(task)
+
+    }
+
+
+        override fun deleteTask(task: Task) {
+
+            val alertDialog = AlertDialog.Builder(this)
+            alertDialog.setMessage(getString(R.string.deleteConf))
+
+
+            alertDialog.setPositiveButton(getString(R.string.delete)) { dialog, i ->
+                viewModel.deleteTask(task)
+                Toast.makeText(this, getString(R.string.deleted), Toast.LENGTH_LONG).show()
+
+            }//end delete option
+                .setNegativeButton(getString(R.string.cancel), DialogInterface.OnClickListener {
+                        dialog, id -> dialog.cancel()
+                })
+            alertDialog.show()
         }
 
         override fun updateTotal(tasks: List<Task>) {
@@ -62,56 +99,41 @@ import kotlin.math.roundToInt
                 }
             binding.totalTimeTv.text=getTimeStringFromDouble(totalTime)
         }
+        //------------------------------------------------------------
+        override fun updateLocalTotal(tasks: List<TaskL>) {
+            totalTime=0.0
+            for(i in tasks){
+                totalTime+=i.timer
+            }
+            binding.totalTimeTv.text=getTimeStringFromDouble(totalTime)
+        }
+        override fun deleteLocalTask(task: TaskL) {
+
+    val alertDialog = AlertDialog.Builder(this)
+    alertDialog.setMessage(getString(R.string.deleteConf))
+
+    alertDialog.setPositiveButton(getString(R.string.delete)) { dialog, i ->
+        viewModel.deleteLocalTask(task)
+        Toast.makeText(this, getString(R.string.deleted), Toast.LENGTH_LONG).show()
+
+            }//end delete option
+                .setNegativeButton(getString(R.string.cancel), DialogInterface.OnClickListener {
+                        dialog, id -> dialog.cancel()
+                })
+            alertDialog.show()
+        }
+        override fun updateLocalTimer(task: TaskL, time:Double){
+            task.timer=time
+
+            viewModel.editLocalTask(task,time.toString())
+
+        }
+        //------------------------------------------------------------
 
         override fun updateTimer(task: Task, time: Double) {
             viewModel.editTask(task,time.toString())
         }
 
-        /*
-                override fun deleteTimer(task: Task) {
-                    viewModel.deleteTask(task)
-                }
-
-            override fun updateTotal() {
-                binding.totalTimeTv.text=getTimeStringFromDouble(totalTime)
-            }
-
-            private fun resetTimer() {
-                    stopTimer()
-                    time=0.0
-                }
-
-                private fun startStopTimer() {
-                    if(timerStarted)
-                        stopTimer()
-                    else
-                        startTimer()
-                }
-
-                private fun startTimer() {
-                    var binding= TasksRowBinding.inflate(layoutInflater)
-                    binding.timerBtn.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24)
-                    serviceIntent.putExtra(TimerService.TIME_EXTRA,time)
-                    startService(serviceIntent)
-                    timerStarted=true
-                }
-
-                private fun stopTimer() {
-                    var binding= TasksRowBinding.inflate(layoutInflater)
-                    stopService(serviceIntent)
-                    binding.timerBtn.setImageResource(R.drawable.started_icon)
-                    timerStarted=false
-                }
-
-
-                private val  updateTime : BroadcastReceiver = object : BroadcastReceiver() {
-                    override fun onReceive(context: Context?, intent: Intent?) {
-                        var binding= TasksRowBinding.inflate(layoutInflater)
-                        time=intent!!.getDoubleExtra(TimerService.TIME_EXTRA,0.0)
-                        binding.timerTv.text=getTimeStringFromDouble(time)
-                    }
-
-                }*/
 
             private fun getTimeStringFromDouble(time: Double): String {
                 val resultInt = time.roundToInt()
@@ -123,4 +145,4 @@ import kotlin.math.roundToInt
             }
 
 
-        }
+}

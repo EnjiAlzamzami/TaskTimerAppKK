@@ -31,8 +31,8 @@
 
                 <ImageView
                     android:id="@+id/deleteBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="63dp"
+                    android:layout_height="46dp"
                     android:layout_gravity="end"
                     android:padding="5dp"
                     app:srcCompat="@drawable/cancel_24" />

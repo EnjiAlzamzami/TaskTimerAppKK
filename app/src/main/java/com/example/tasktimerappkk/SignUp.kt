@@ -30,15 +30,14 @@ class SignUp : AppCompatActivity() {
 
             signUpBt.setOnClickListener {
                 new =true//change the sate to true each time user click the button
-                var name=name.text.toString()
-                var email=emailET.text.toString()
-                var password=passwordET.text.toString()
-                var confirm=confirmET.text.toString()
+                val name=name.text.toString()
+                val email=emailET.text.toString()
+                val password=passwordET.text.toString()
+                val confirm=confirmET.text.toString()
 
                 if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirm.isNotEmpty()){
                     for (user in users){
                         println(" for (user in users), ${user.id}")
-
                         if (name==user.username)
                         {
                             new=false
@@ -54,17 +53,26 @@ class SignUp : AppCompatActivity() {
                         //Create new user object then added in the database:
                         var user=User("", name,email,md5Hash(password))
                         viewModel.addUser(user)
-                        Toast.makeText(this@SignUp, "User Added Successfully", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@SignUp, getString(R.string.addUserS), Toast.LENGTH_LONG).show()
                         var intent = Intent(this@SignUp, MainActivity::class.java)
                         this@SignUp.startActivity(intent)
                     }
-
-
                 }
                 else{
-                    Toast.makeText(this@SignUp, "please fill all fields", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@SignUp, getString(R.string.fillWarnning), Toast.LENGTH_LONG).show()
                 }
             }//End signUpBt.setOnClickListener
+
+            backBtn.setOnClickListener {
+                val signInIntent = Intent(this@SignUp, MainActivity::class.java)
+                startActivity(signInIntent)
+                finish()
+            }
+            signinpBtn.setOnClickListener {
+                val signInIntent = Intent(this@SignUp, MainActivity::class.java)
+                startActivity(signInIntent)
+                finish()
+            }
         }
     }//End onCreate function
     //========================================================================
@@ -77,7 +85,7 @@ class SignUp : AppCompatActivity() {
                 "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
                 ")+")
         if(EMAIL_ADDRESS_PATTERN.matcher(email).matches()) return true
-        else  Toast.makeText(this,"The email must follow the pattern example@organization.extention",Toast.LENGTH_SHORT).show()
+        else  Toast.makeText(this,getString(R.string.emailCon),Toast.LENGTH_SHORT).show()
         return false
         //=====================================================================
 

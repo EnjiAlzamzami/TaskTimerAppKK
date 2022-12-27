@@ -6,9 +6,8 @@ import com.example.tasktimerappkk.MainActivity
 
 @Dao
 interface TaskDAO {
-    companion object userData{ lateinit var flag:String}
 
-    @Query("select * from tasks WHERE user='guest' order by pk asc")
+    @Query("select * from tasks order by pk asc")
     fun getTasks(): LiveData<List<TaskL>>
 //    @Query("select * from tasks WHERE user!='guest' order by pk asc")
     @Insert(onConflict = OnConflictStrategy.IGNORE)
