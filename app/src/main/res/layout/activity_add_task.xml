@@ -8,118 +8,124 @@
     <LinearLayout
         android:id="@+id/topLay"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/titleTv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:text="@string/NewTask"
+            android:textColor="@color/co9"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/bottomLay"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/frame_style1"
-        android:orientation="vertical"
-        android:padding="40dp"
+        android:layout_margin="20dp"
+        android:elevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topLay">
 
-        <TextView
-            android:id="@+id/titleTv"
+        <LinearLayout
+            android:id="@+id/bottomLay"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/NewTask"
-            android:textColor="@color/co7"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="15dp">
-
-            <EditText
-                android:id="@+id/titleEt"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/custom_input"
-                android:gravity="center"
-                android:textColorHint="@color/co4"
-
-                android:hint="@string/taskTitle_hint"
-                android:inputType="textPersonName"
-                android:textColor="@color/co7" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="15dp">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:id="@+id/detailEt"
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/custom_input"
-                        android:gravity="center"
-                        android:textColorHint="@color/co4"
-
-                        android:hint="@string/taskDetail_hint"
-                        android:textColor="@color/co7"
-                        android:textSize="18dp" />
-                </LinearLayout>
-            </ScrollView>
+            android:layout_height="match_parent"
+            android:background="@drawable/frame_style5"
+            android:orientation="vertical"
+            android:padding="40dp">
 
 
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/signupView"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="15dp">
-
-            <Button
-                android:id="@+id/addTaskBtn"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/layout_style"
-                android:padding="5dp"
-                android:text="@string/addTaskBtn"
-                android:textColor="@color/co7"
-                android:textSize="20dp" />
+                android:layout_margin="20dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="15dp">
 
-        </androidx.cardview.widget.CardView>
+                <EditText
+                    android:id="@+id/titleEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/custom_input"
+                    android:gravity="center"
+                    android:hint="@string/taskTitle_hint"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/co7"
+                    android:textColorHint="@color/co4" />
 
-    </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="15dp">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/detailEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/custom_input"
+                            android:gravity="center"
+                            android:hint="@string/taskDetail_hint"
+
+                            android:textColor="@color/co7"
+                            android:textColorHint="@color/co4"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+                </ScrollView>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/signupView"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="15dp">
+
+                <Button
+                    android:id="@+id/addTaskBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_style"
+                    android:padding="5dp"
+                    android:text="@string/addTaskBtn"
+                    android:textColor="@color/co7"
+                    android:textSize="20dp" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
 
 
     <ImageView
