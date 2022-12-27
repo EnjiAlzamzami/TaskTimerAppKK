@@ -5,100 +5,98 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
+
+
+
+    <LinearLayout
         android:id="@+id/rootLay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/frame_style6"
+        android:orientation="vertical"
+        android:elevation="15dp"
         android:layout_margin="20dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="15dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <LinearLayout
+            android:id="@+id/detailsLay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/layout_style"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/detailsLay"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/deleteBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:padding="5dp"
+                app:srcCompat="@drawable/cancel_24" />
+
+            <TextView
+                android:id="@+id/taskTitleTv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="Feed the cat"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/deleteBtn"
-                    android:layout_width="63dp"
-                    android:layout_height="46dp"
-                    android:layout_gravity="end"
-                    android:padding="5dp"
-                    app:srcCompat="@drawable/cancel_24" />
-
-                <TextView
-                    android:id="@+id/taskTitleTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/co6"
-                    android:text="Feed the cat"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/descriptionTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/co6"
-                    android:text="Use the new food \nDon't forget to clean the bowl after"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="16dp" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/btnLay"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/descriptionTv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingHorizontal="55dp"
-                android:paddingVertical="5dp"
-                android:weightSum="3">
-
-                <ImageView
-                    android:id="@+id/resetBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/restart_24" />
-
-                <TextView
-                    android:id="@+id/timerTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/frame_style"
-                    android:gravity="center"
-                    android:text="00:00:00"
-                    android:textColor="@color/co7"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/timerBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/started_24" />
-
-            </LinearLayout>
+                android:layout_marginHorizontal="18dp"
+                android:layout_gravity="center"
+                android:text="Use the new food \nDon't forget to clean the bowl after"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:id="@+id/btnLay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="55dp"
+            android:paddingVertical="5dp"
+            android:weightSum="3">
+
+            <ImageView
+                android:id="@+id/resetBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/restart_24" />
+
+            <TextView
+                android:id="@+id/timerTv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/frame_style"
+                android:gravity="center"
+                android:text="00:00:00"
+                android:textColor="@color/co7"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/timerBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/started_24" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

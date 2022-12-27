@@ -60,7 +60,8 @@
                 android:ems="10"
                 android:hint="@string/FullName"
                 android:inputType="textPersonName"
-                android:paddingStart="10dp" />
+                android:paddingHorizontal="10dp"
+                />
 
         </androidx.cardview.widget.CardView>
 
@@ -84,7 +85,8 @@
                 android:ems="10"
                 android:hint="@string/username_hint"
                 android:inputType="textPersonName"
-                android:paddingStart="10dp" />
+                android:paddingHorizontal="10dp"
+                />
 
         </androidx.cardview.widget.CardView>
 
@@ -108,7 +110,8 @@
                 android:ems="10"
                 android:hint="@string/email_hint"
                 android:inputType="textEmailAddress"
-                android:paddingStart="10dp" />
+                android:paddingHorizontal="10dp"
+                />
 
         </androidx.cardview.widget.CardView>
 
@@ -131,7 +134,8 @@
                 android:ems="10"
                 android:hint="@string/password_hint"
                 android:inputType="textPassword"
-                android:paddingStart="10dp" />
+                android:paddingHorizontal="10dp"
+                />
 
         </androidx.cardview.widget.CardView>
 
@@ -154,7 +158,8 @@
                 android:ems="10"
                 android:hint="@string/confPassword_hint"
                 android:inputType="textPassword"
-                android:paddingStart="10dp" />
+                android:paddingHorizontal="10dp"
+                />
 
         </androidx.cardview.widget.CardView>
 
@@ -167,7 +172,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
         android:layout_marginBottom="20dp"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="20dp"
         app:cardElevation="15dp"
         app:layout_constraintBottom_toTopOf="@id/signinLay"
         app:layout_constraintEnd_toEndOf="parent"
@@ -177,7 +182,7 @@
             android:id="@+id/signUpBt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/layout_style2"
+            android:background="@drawable/layout_style"
             android:padding="5dp"
             android:text="@string/signupBtn"
             android:textColor="@color/co7"

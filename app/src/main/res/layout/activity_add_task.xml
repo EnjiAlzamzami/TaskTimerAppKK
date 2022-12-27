@@ -103,14 +103,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            app:cardCornerRadius="10dp"
+            app:cardCornerRadius="20dp"
             app:cardElevation="15dp">
 
             <Button
                 android:id="@+id/addTaskBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/layout_style2"
+                android:background="@drawable/layout_style"
                 android:padding="5dp"
                 android:text="@string/addTaskBtn"
                 android:textColor="@color/co7"

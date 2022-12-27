@@ -55,7 +55,7 @@ class TasksAdapter(var clickListener: ClickListener):
 
                 timerBtn.setOnClickListener {
                     if (timerStarted) {
-                        timerBtn.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24)
+                        timerBtn.setImageResource(R.drawable.pause1)
                         timerStarted=false
                         working=true
                         object : CountDownTimer(30000, 1000) {
