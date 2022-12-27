@@ -30,15 +30,14 @@ class SignUp : AppCompatActivity() {
 
             signUpBt.setOnClickListener {
                 new =true//change the sate to true each time user click the button
-                var name=name.text.toString()
-                var email=emailET.text.toString()
-                var password=passwordET.text.toString()
-                var confirm=confirmET.text.toString()
+                val name=name.text.toString()
+                val email=emailET.text.toString()
+                val password=passwordET.text.toString()
+                val confirm=confirmET.text.toString()
 
                 if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirm.isNotEmpty()){
                     for (user in users){
                         println(" for (user in users), ${user.id}")
-
                         if (name==user.username)
                         {
                             new=false
@@ -58,13 +57,22 @@ class SignUp : AppCompatActivity() {
                         var intent = Intent(this@SignUp, MainActivity::class.java)
                         this@SignUp.startActivity(intent)
                     }
-
-
                 }
                 else{
                     Toast.makeText(this@SignUp, getString(R.string.fillWarnning), Toast.LENGTH_LONG).show()
                 }
             }//End signUpBt.setOnClickListener
+
+            backBtn.setOnClickListener {
+                val signInIntent = Intent(this@SignUp, MainActivity::class.java)
+                startActivity(signInIntent)
+                finish()
+            }
+            signinpBtn.setOnClickListener {
+                val signInIntent = Intent(this@SignUp, MainActivity::class.java)
+                startActivity(signInIntent)
+                finish()
+            }
         }
     }//End onCreate function
     //========================================================================

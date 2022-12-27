@@ -18,18 +18,16 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding:ActivityMainBinding
-    lateinit var context: Context
-    lateinit var viewModel: UsersViewModel
-    lateinit var users:ArrayList<User>
+    private lateinit var binding:ActivityMainBinding
+    private lateinit var viewModel: UsersViewModel
+    private lateinit var users:ArrayList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        context=this
         loadLocate()
-        viewModel= ViewModelProvider(this).get(UsersViewModel::class.java)
+        viewModel= ViewModelProvider(this)[UsersViewModel::class.java]
         //Get users form the fierbase
         users= arrayListOf<User>()
         users=viewModel.getUser()
@@ -39,37 +37,54 @@ class MainActivity : AppCompatActivity() {
             }
             //---------------------------------------------------
             signupBtn.setOnClickListener {
-                var intentSignUp = Intent(context, SignUp::class.java)
-               context.startActivity(intentSignUp)
+                val intentSignUp = Intent(this@MainActivity, SignUp::class.java)
+               startActivity(intentSignUp)
+                finish()
             }
             loginBtn.setOnClickListener {
-                var userName=nameEt.text.toString()
-                var password=md5Hash(passEt.text.toString())
-                for (user in users){
-                    if (userName==user.username)
-                    {
-                        if (password==user.password){
-                            userData.user=user
-                            nameEt.setText("")
-                            passEt.setText("")
+                val userName=nameEt.text
+                val password=md5Hash(passEt.text.toString())
+                if(userName.toString().isNotEmpty()&&passEt.text.isNotEmpty()){
+                    for (user in users){
+                         if(true) {
+                             if (userName.toString() == user.username) {
+                                 if (password == user.password) {
+                                     userData.user = user
+                                     nameEt.setText("")
+                                     passEt.setText("")
 
-                            var intent1 = Intent(context, TasksActivity::class.java)
-                            context.startActivity(intent1)
+                                     val TasksActivityIntent =
+                                         Intent(this@MainActivity, TasksActivity::class.java)
+                                     startActivity(TasksActivityIntent)
+                                     finish()
 
-                        }
-                        else{
-                            Toast.makeText(this@MainActivity,getString(R.string.loginWrnning),
-                                Toast.LENGTH_SHORT).show()
-                        }
+
+                                 } else {
+                                     Toast.makeText(
+                                         this@MainActivity, getString(R.string.loginWrnning),
+                                         Toast.LENGTH_SHORT
+                                     ).show()
+                                 }
+                             }
+                         }else{
+                             Toast.makeText(this@MainActivity,"The user doesn't found!",
+                                 Toast.LENGTH_SHORT).show()
+
+                         }
                     }
+                }else{
+                    Toast.makeText(this@MainActivity,"Please Enter the required data!",
+                        Toast.LENGTH_SHORT).show()
                 }
+
 
 
             }//End loginBtn.setOnClickListener
 
             guestBtn.setOnClickListener {
-                var intent = Intent(context, TasksActivity::class.java)
-                context.startActivity(intent)
+                val intent = Intent(this@MainActivity, TasksActivity::class.java)
+                startActivity(intent)
+                finish()
             }
 
         }
@@ -77,15 +92,15 @@ class MainActivity : AppCompatActivity() {
 
     //===========================================================
     //This function to hash password before compare it with one in database
-    fun md5Hash(str: String): String {
+    private fun md5Hash(str: String): String {
         val md = MessageDigest.getInstance("MD5")
         val bigInt = BigInteger(1, md.digest(str.toByteArray(Charsets.UTF_8)))
         return String.format("%032x", bigInt)
     }
     //=============================================================
-    fun showChangeLang(){
-        var listL= arrayOf("English","عربي")
-        val mBuilder=AlertDialog.Builder(context)
+    private fun showChangeLang(){
+        val listL= arrayOf("English","عربي")
+        val mBuilder=AlertDialog.Builder(this)
         mBuilder.setTitle("Choose your Language")
         mBuilder.setSingleChoiceItems(listL,-1){
           dialog,which->
@@ -103,8 +118,8 @@ class MainActivity : AppCompatActivity() {
 
     }
     //=============================================================
-    fun setLocate(Lang:String){
-        var locale= Locale(Lang)
+    private fun setLocate(Lang:String){
+        val locale= Locale(Lang)
         Locale.setDefault(locale)
         val config=Configuration()
         config.locale=locale
@@ -114,9 +129,9 @@ class MainActivity : AppCompatActivity() {
         editor.apply()
     }
     //=============================================================
-    fun loadLocate(){
+    private fun loadLocate(){
         val sharPrefreances=getSharedPreferences("Settings",Activity.MODE_PRIVATE)
-        var language=sharPrefreances.getString("MyLang","en")
+        val language=sharPrefreances.getString("MyLang","en")
         if (language != null) {
             setLocate(language)
         }
@@ -125,6 +140,5 @@ class MainActivity : AppCompatActivity() {
     //This to save user who is register
     companion object userData{
         var user: User? =null
-        var localStorage="tasks"
     }
 }

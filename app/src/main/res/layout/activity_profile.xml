@@ -169,11 +169,12 @@
 
             <Button
                 android:id="@+id/logoutBtn"
-                android:background="@drawable/logout"
-                android:padding="10dp"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_margin="3dp"
+                android:background="@drawable/logout"
+                android:padding="10dp"
+                android:rotation="90"
                 android:textColor="@color/co7" />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView

@@ -26,7 +26,7 @@ class RegisterRepository : AppCompatActivity() {
         }
     }
 
-    suspend fun getUser(user:User){
+     suspend fun getUser(user:User){
         db.collection("UsersCollection").document(user.id)
             .get()
 
@@ -40,7 +40,7 @@ class RegisterRepository : AppCompatActivity() {
 
 
     fun getUsers(): ArrayList<User>{
-        var users:ArrayList<User>
+        val users:ArrayList<User>
 
         users= arrayListOf()
         users.clear()
@@ -51,9 +51,9 @@ class RegisterRepository : AppCompatActivity() {
                 for (document in result) {
 
 
-                    var username=document.get("username").toString()
-                    var emails=document.get("email").toString()
-                    var password=document.get("password").toString()
+                    val username=document.get("username").toString()
+                    val emails=document.get("email").toString()
+                    val password=document.get("password").toString()
                     println("User= $username")
 
                     users.add(User(document.id,username,emails,password))

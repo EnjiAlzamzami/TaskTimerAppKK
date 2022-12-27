@@ -22,7 +22,7 @@ class MyViewModel(application: Application): AndroidViewModel(application)   {
         //======================================================
         if (MainActivity.user!=null) {
             repository = Repository(MainActivity.userData.user!!.id)
-                tasks = repository.getData()
+               tasks = repository.getData()
                localTasks = localRepositry.getTasks((MainActivity.user!!.username))
 
         }
