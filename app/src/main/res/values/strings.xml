@@ -29,5 +29,13 @@
     <string name="deleted">The task deleted successfully</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
+    <string name="Hello">Hello,</string>
+    <string name="name">Name of the user</string>
+    <string name="userName">user name</string>
+    <string name="wrong">Something Wrong!</string>
+    <string name="deleteAccT">Delete Account</string>
+    <string name="deleteAcc">Are you sure You want to delete your account!</string>
+    <string name="languChose">Choose your Language</string>
+
 
 </resources>

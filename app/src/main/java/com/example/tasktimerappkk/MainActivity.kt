@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
     private fun showChangeLang(){
         val listL= arrayOf("English","عربي")
         val mBuilder=AlertDialog.Builder(this)
-        mBuilder.setTitle("Choose your Language")
+        mBuilder.setTitle(getString(R.string.languChose))
         mBuilder.setSingleChoiceItems(listL,-1){
           dialog,which->
             if (which==0) {

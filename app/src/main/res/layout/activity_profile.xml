@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="50dp"
-                android:text="Hello,"
+                android:text="@string/Hello"
                 android:textColor="@color/co7"
                 android:textSize="30dp" />
 
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="50dp"
-                android:text="Name of the user"
+                android:text="@string/name"
                 android:textColor="@color/co7"
                 android:textSize="20dp" />
         </LinearLayout>
@@ -76,7 +76,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="5dp"
-            android:text="Username"
+            android:text="@string/userName"
             android:textColor="@color/co7"
             android:textSize="20sp" />
 
@@ -108,7 +108,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
-            android:text="Email"
+            android:text="@string/email_hint"
             android:textColor="@color/co7"
             android:textSize="20sp" />
 

@@ -28,6 +28,13 @@
     <string name="deleted">تم حذف المهمة بنجاح</string>
     <string name="delete">حذف</string>
     <string name="cancel">الغاء</string>
+    <string name="Hello">مرحبا</string>
+    <string name="name">اسم المستخدم</string>
+    <string name="userName">اسم المستخدم</string>
+    <string name="wrong">حدث خطأ نعتذر!</string>
+    <string name="deleteAccT">حذف الحساب</string>
+    <string name="deleteAcc">هل أنت متأكد من انك تريد حذف الحساب!</string>
+    <string name="languChose">اختر لغتك</string>
 
 
 </resources>

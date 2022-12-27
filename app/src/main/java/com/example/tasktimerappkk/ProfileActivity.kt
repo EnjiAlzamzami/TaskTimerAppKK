@@ -46,7 +46,7 @@ class ProfileActivity : AppCompatActivity() {
                 if(user!=null){
                     DeletedDialog(user!!)
                 }else{
-                    Toast.makeText(this@ProfileActivity,"Something Wrong!",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ProfileActivity, getString(R.string.wrong),Toast.LENGTH_LONG).show()
                 }
 
             }
@@ -64,26 +64,26 @@ class ProfileActivity : AppCompatActivity() {
     fun DeletedDialog(userDeleted: User) {
         val dialogBuilder = AlertDialog.Builder(this@ProfileActivity)
 
-        dialogBuilder.setPositiveButton("Yes!") { dialog, id ->
+        dialogBuilder.setPositiveButton( getString(R.string.delete)) { dialog, id ->
             viewModel.deleteUser(userDeleted)
             val signOutIntent= Intent(this@ProfileActivity,MainActivity::class.java)
             startActivity(signOutIntent)
             finish()
         }
-            .setNegativeButton("Cancel") { dialog, id ->
+            .setNegativeButton( getString(R.string.cancel)) { dialog, id ->
                 dialog.cancel()
             }
 
         val alert = dialogBuilder.create()
-        alert.setTitle("Delete Account")
-        alert.setMessage("Are you sure You want to delete your account!")
+        alert.setTitle(getString(R.string.deleteAccT))
+        alert.setMessage(getString(R.string.deleteAcc))
         alert.show()
     }
 
     fun showChangeLang(){
         val listL= arrayOf("English","عربي")
         val mBuilder=AlertDialog.Builder(this)
-        mBuilder.setTitle("Choose your Language")
+        mBuilder.setTitle(getString(R.string.languChose))
         mBuilder.setSingleChoiceItems(listL,-1){
                 dialog,which->
             if (which==0) {
