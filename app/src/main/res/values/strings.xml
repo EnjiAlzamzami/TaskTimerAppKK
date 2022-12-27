@@ -36,6 +36,7 @@
     <string name="deleteAccT">Delete Account</string>
     <string name="deleteAcc">Are you sure You want to delete your account!</string>
     <string name="languChose">Choose your Language</string>
+    <string name="FullName">Full Name</string>
 
 
 </resources>

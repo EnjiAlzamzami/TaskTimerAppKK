@@ -20,11 +20,11 @@
             android:id="@+id/signupTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:textStyle="italic"
+            android:text="@string/signupBtn"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="40dp" />
+            android:textSize="36dp"
+            android:textStyle="italic" />
     </LinearLayout>
 
 
@@ -58,7 +58,7 @@
                 android:drawableStart="@drawable/custom_fullname_icon"
                 android:drawablePadding="5dp"
                 android:ems="10"
-                android:hint="Full Name"
+                android:hint="@string/FullName"
                 android:inputType="textPersonName"
                 android:paddingStart="10dp" />
 

@@ -35,6 +35,7 @@
     <string name="deleteAccT">حذف الحساب</string>
     <string name="deleteAcc">هل أنت متأكد من انك تريد حذف الحساب!</string>
     <string name="languChose">اختر لغتك</string>
+    <string name="FullName">الاسم كامل</string>
 
 
 </resources>
